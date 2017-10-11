@@ -1,0 +1,78 @@
+﻿<syncfusion:RibbonWindow
+xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+xmlns:syncfusion="http://schemas.syncfusion.com/wpf" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    x:Class="TandA.Views.StartScreen"
+    xmlns:local="clr-namespace:TandA.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="{Binding WindowTitle}"
+    
+    xmlns:sfSkinManager="clr-namespace:Syncfusion.SfSkinManager;assembly=Syncfusion.SfSkinManager.WPF"
+    sfSkinManager:SfSkinManager.VisualStyle="Metro"
+    
+    Office2010Icon="/Images/Icon.png"
+    mc:Ignorable="d"
+    Width="700" Height="500">
+    <Grid>
+        <StackPanel>
+            <syncfusion:Ribbon x:Name="_ribbon" VerticalAlignment="Top">
+
+                <syncfusion:RibbonTab Caption="MASTER"  IsChecked="True">
+                    <syncfusion:RibbonBar Name="Employees" Header="Employees" Width="170" >
+                        <syncfusion:RibbonButton SizeForm="Large" ToolTip="Add new Employee" Click="Add_Employee_Click" Label="Add New" />
+                        <syncfusion:RibbonButton SizeForm="Small" ToolTip="View Employees" Click="Employee_List_Click"  Label="View List" />
+                        <syncfusion:RibbonButton SizeForm="small" Label="Advanced Search" />
+
+                    </syncfusion:RibbonBar>
+                    <syncfusion:RibbonBar Name="Groups" Header="Groups" Width="170" >
+                        <syncfusion:RibbonButton SizeForm="Large" ToolTip="Add new Group" Click="Add_Group_Click" Label="Add New" />
+                        <syncfusion:RibbonButton SizeForm="Small" ToolTip="View Groups" Click="Group_List_Click"  Label="View List" />
+                        <syncfusion:RibbonButton SizeForm="small" Label="Advanced Search" />
+                    </syncfusion:RibbonBar>
+                    <syncfusion:RibbonBar Name="Absenthiesm" Header="Absenthiesm" Width="200" />
+
+                </syncfusion:RibbonTab>
+
+                <syncfusion:RibbonTab Caption="SETTINGS"  IsChecked="False"/>
+
+                <syncfusion:RibbonTab Caption="SECURITY"  IsChecked="False"/>
+
+                <syncfusion:RibbonTab Caption="PRODUCTION"  IsChecked="False"/>
+
+                <syncfusion:RibbonTab Caption="LOGOUT"  IsChecked="False"/>
+
+
+                <syncfusion:Ribbon.BackStage>
+
+                    <syncfusion:Backstage>
+
+                        <syncfusion:BackstageTabItem  Header="Info">
+
+                            <StackPanel Margin="10 5">
+
+                                <TextBlock FontSize="20" Text="Account Information"/>
+
+                                <TextBlock FontSize="12" Text="Employ1@syncfusion.com"/>
+
+                            </StackPanel>
+
+                        </syncfusion:BackstageTabItem>
+
+                        <syncfusion:BackstageTabItem  Header="About">
+                            <StackPanel>
+                                <TextBlock Text="About Time Stamp" FontSize="20" />
+                            </StackPanel>
+                        </syncfusion:BackstageTabItem>
+
+                        <syncfusion:BackStageCommandButton Header="Save" />
+
+
+                    </syncfusion:Backstage>
+
+                </syncfusion:Ribbon.BackStage>
+            </syncfusion:Ribbon>
+            <Button Content="Hello" />
+        </StackPanel>
+    </Grid>
+</syncfusion:RibbonWindow>
