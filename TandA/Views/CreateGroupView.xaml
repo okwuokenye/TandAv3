@@ -1,0 +1,39 @@
+﻿<Window x:Class="TandA.Views.CreateGroupView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TandA.Views"
+        mc:Ignorable="d"
+        xmlns:Notification="clr-namespace:Syncfusion.Windows.Controls.Notification;assembly=Syncfusion.SfBusyIndicator.WPF"
+        Title="{Binding WindowTitle}"  Height="200" Width="320">
+    <Grid Background="AliceBlue">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <StackPanel HorizontalAlignment="Center" Margin="0 10">
+                <TextBlock Text="Create Group" FontSize="20" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5 5">
+                <TextBlock Text="Group Ref: " Width="120" />
+                <TextBox Width="150" Text="{Binding GroupRef}" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="5 5">
+                <TextBlock Text="Group Description: " Width="120" />
+                <TextBox Width="150" Text="{Binding GroupDesc }" />
+            </StackPanel>
+
+
+            <StackPanel Orientation="Horizontal" Margin="5 15">
+                <Button Width="80" Margin="45 0" Content="Save" Command="{Binding CreateGroup}" />
+                <Button Width="80" Margin="10 0" Content="Exit" Click="Close_Click" />
+            </StackPanel>
+
+        </StackPanel>
+        <Grid Background="White" Opacity="0.7" Visibility="{Binding WindowLoaderVisibility}" Grid.RowSpan="1">
+            <Notification:SfBusyIndicator Grid.RowSpan="1" AnimationType="Sunny" Header="Loading..." />
+        </Grid>
+    </Grid>
+</Window>

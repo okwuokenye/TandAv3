@@ -82,11 +82,15 @@
     <Compile Include="ObservableObject.cs" />
     <Compile Include="PropertySupport.cs" />
     <Compile Include="RelayCommand.cs" />
+    <Compile Include="ViewModels\AbsenthiesmViewModel.cs" />
     <Compile Include="ViewModels\EmployeeViewModel.cs" />
     <Compile Include="ViewModels\GroupViewModel.cs" />
     <Compile Include="ViewModels\StartScreenViewModel.cs" />
     <Compile Include="Views\CreateEmployeeView.xaml.cs">
       <DependentUpon>CreateEmployeeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CreateGroupView.xaml.cs">
+      <DependentUpon>CreateGroupView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\EmployeeListVIew.xaml.cs">
       <DependentUpon>EmployeeListVIew.xaml</DependentUpon>
@@ -98,6 +102,10 @@
       <DependentUpon>StartScreen.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\CreateEmployeeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CreateGroupView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

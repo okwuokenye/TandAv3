@@ -30,7 +30,11 @@ xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
                         <syncfusion:RibbonButton SizeForm="Small" ToolTip="View Groups" Click="Group_List_Click"  Label="View List" />
                         <syncfusion:RibbonButton SizeForm="small" Label="Advanced Search" />
                     </syncfusion:RibbonBar>
-                    <syncfusion:RibbonBar Name="Absenthiesm" Header="Absenthiesm" Width="200" />
+                    <syncfusion:RibbonBar Name="Absenthiesm" Header="Absenthiesm" Width="200">
+                        <syncfusion:RibbonButton SizeForm="Large" ToolTip="Add new Absenthiesm" Click="Add_Absenthiesm_Click" Label="Add New" />
+                        <syncfusion:RibbonButton SizeForm="Small" ToolTip="View Absenthiesms" Click="Absenthiesm_List_Click"  Label="View List" />
+                        <syncfusion:RibbonButton SizeForm="small" Label="Advanced Search" />
+                    </syncfusion:RibbonBar>
 
                 </syncfusion:RibbonTab>
 

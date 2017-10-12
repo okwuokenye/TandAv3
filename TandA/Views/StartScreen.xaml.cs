@@ -43,11 +43,23 @@ namespace TandA.Views
 
         private void Add_Group_Click(object sender, RoutedEventArgs e)
         {
-            CreateEmployeeView cE = new CreateEmployeeView();
-            cE.Show();
+            CreateGroupView cG = new CreateGroupView();
+            cG.Show();
         }
 
         private void Group_List_Click(object sender, RoutedEventArgs e)
+        {
+            GroupsListView GL = new GroupsListView();
+            GL.Show();
+        }
+
+        private void Add_Absenthiesm_Click(object sender, RoutedEventArgs e)
+        {
+            CreateGroupView cG = new CreateGroupView();
+            cG.Show();
+        }
+
+        private void Absenthiesm_List_Click(object sender, RoutedEventArgs e)
         {
             GroupsListView GL = new GroupsListView();
             GL.Show();

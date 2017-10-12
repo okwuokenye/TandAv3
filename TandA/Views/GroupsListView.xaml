@@ -81,10 +81,6 @@
                             <TextBox Width="150" Text="{Binding GroupDesc }" />
                         </StackPanel>
 
-                        <StackPanel Orientation="Horizontal" Margin="5 5">
-                            <TextBlock Text="Group Supervisor: " Width="120" />
-                            <ComboBox Width="150" />
-                        </StackPanel>
 
                         <StackPanel Orientation="Horizontal" Margin="5 15">
                             <Button Width="80" Margin="10 0" Content="Save" Command="{Binding CreateEmployee}" CommandParameter="{Binding ElementName=Groups, Path=SelectedItems}" />

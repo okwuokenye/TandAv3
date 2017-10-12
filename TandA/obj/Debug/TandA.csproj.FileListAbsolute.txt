@@ -53,3 +53,5 @@ C:\Users\Administrator\Documents\Visual Studio 2017\Projects\TandA\TandA\obj\Deb
 C:\Users\Administrator\Documents\Visual Studio 2017\Projects\TandA\TandA\obj\Debug\Views\EmployeeListVIew.baml
 C:\Users\Administrator\Documents\Visual Studio 2017\Projects\TandA\TandA\obj\Debug\Views\GroupsListView.g.cs
 C:\Users\Administrator\Documents\Visual Studio 2017\Projects\TandA\TandA\obj\Debug\Views\GroupsListView.baml
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\TandA\TandA\obj\Debug\Views\CreateGroupView.g.cs
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\TandA\TandA\obj\Debug\Views\CreateGroupView.baml

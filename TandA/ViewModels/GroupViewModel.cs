@@ -190,6 +190,43 @@ namespace TandA.ViewModels
             }
         }
         public ICommand CloseEditGroup { get { return new RelayCommand(CloseEditGroupExecute); } }
+
+        private async void CreateGroupExecute()
+        {
+            try
+            {
+                _WindowLoaderVisibility = Visibility.Visible;
+                RaisePropertyChanged("WindowLoaderVisibility");
+
+                String strErr = "";
+                await Task.Run(() =>
+                {
+                    strErr = AdminDAL.CreateGroup(_GroupRef, _GroupDesc);
+                });
+
+                if(strErr != "")
+                {
+                    MessageBox.Show(strErr, "Error Occured", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }else
+                {
+                    MessageBox.Show("Successfully created group", "Group Created", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+
+                _GroupRef = "";
+                _GroupDesc = "";
+
+                RaisePropertyChanged("GroupRef");
+                RaisePropertyChanged("GroupDesc");
+
+                _WindowLoaderVisibility = Visibility.Collapsed;
+                RaisePropertyChanged("WindowLoaderVisibility");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(this.ToString() + ".CreateGroupExecute\n" + ex.Message, "Error");
+            }
+        }
+        public ICommand CreateGroup { get { return new RelayCommand(CreateGroupExecute); } }
         #endregion
     }
 }
