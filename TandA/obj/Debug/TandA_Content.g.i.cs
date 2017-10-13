@@ -8,6 +8,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dll/syncfusion.compression.base.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dll/syncfusion.data.wpf.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dll/syncfusion.pdf.base.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dll/syncfusion.pdf.wpf.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dll/syncfusion.sfbusyindicator.wpf.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dll/syncfusion.sfgrid.wpf.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dll/syncfusion.sfgridconverter.wpf.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dll/syncfusion.sfhubtile.wpf.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dll/syncfusion.sfshared.wpf.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dll/syncfusion.sfskinmanager.wpf.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dll/syncfusion.shared.wpf.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dll/syncfusion.themes.metro.wpf.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dll/syncfusion.themes.office2016white.wpf.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dll/syncfusion.themes.visualstudio2015.wpf.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dll/syncfusion.tools.wpf.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dll/syncfusion.xlsio.base.dll")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/time_and%20attendance.svg")]
 
 

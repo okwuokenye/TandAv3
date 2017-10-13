@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Administrator\Documents\Visual Studio 2017\Projects\TandA\TandA\App.xaml
-6-1885148158
-1533882117
-27-908029445
-29-1322259833
-Views\CreateEmployeeView.xaml;Views\CreateGroupView.xaml;Views\EmployeeListVIew.xaml;Views\GroupsListView.xaml;Views\MainWindow.xaml;Views\StartScreen.xaml;
+91577983637
+17-357031495
+31178493446
+29-1333439860
+Views\AbsentListView.xaml;Views\AddGroupMemberView.xaml;Views\CreateAbsenteeismView.xaml;Views\CreateEmployeeView.xaml;Views\CreateGroupView.xaml;Views\EmployeeListView.xaml;Views\GroupsListView.xaml;Views\MainWindow.xaml;Views\StartScreen.xaml;
 
-True
+False
 
