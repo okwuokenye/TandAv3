@@ -38,7 +38,17 @@ xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
 
                 </syncfusion:RibbonTab>
 
-                <syncfusion:RibbonTab Caption="SETTINGS"  IsChecked="False"/>
+                <syncfusion:RibbonTab Caption="SETTINGS"  IsChecked="False">
+                    <syncfusion:RibbonBar Name="GroupMembers" Header="Group Members" Width="200">
+                        <syncfusion:RibbonButton SizeForm="Large" ToolTip="Add Group Member" Click="Add_Absenthiesm_Click" Label="Add Group Member" />
+                        <syncfusion:RibbonButton SizeForm="Small" ToolTip="View Group Members" Click="Absenthiesm_List_Click"  Label="View Group Members" />
+                    </syncfusion:RibbonBar>
+
+                    <syncfusion:RibbonBar Name="Supervisors" Header="Supervisors" Width="200">
+                        <syncfusion:RibbonButton SizeForm="Large" ToolTip="Add Supervisor" Click="Add_Absenthiesm_Click" Label="Add Supervisor" />
+                        <syncfusion:RibbonButton SizeForm="Small" ToolTip="View Supervisors" Click="Absenthiesm_List_Click"  Label="View Supervisors" />
+                    </syncfusion:RibbonBar>
+                </syncfusion:RibbonTab>
 
                 <syncfusion:RibbonTab Caption="SECURITY"  IsChecked="False"/>
 

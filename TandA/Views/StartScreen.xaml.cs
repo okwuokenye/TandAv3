@@ -55,14 +55,14 @@ namespace TandA.Views
 
         private void Add_Absenthiesm_Click(object sender, RoutedEventArgs e)
         {
-            CreateGroupView cG = new CreateGroupView();
-            cG.Show();
+            CreateAbsenteeismView cA = new CreateAbsenteeismView();
+            cA.Show();
         }
 
         private void Absenthiesm_List_Click(object sender, RoutedEventArgs e)
         {
-            GroupsListView GL = new GroupsListView();
-            GL.Show();
+            AbsentListView AL = new AbsentListView();
+            AL.Show();
         }
     }
 }
