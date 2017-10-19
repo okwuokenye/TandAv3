@@ -64,5 +64,35 @@ namespace TandA.Views
             AbsentListView AL = new AbsentListView();
             AL.Show();
         }
+
+        private void Add_GroupMember_Click(object sender, RoutedEventArgs e)
+        {
+            AddGroupMemberView cG = new AddGroupMemberView();
+            cG.Show();
+        }
+
+        private void View_GroupMembers_Click(object sender, RoutedEventArgs e)
+        {
+            GroupEmployeesView GV = new GroupEmployeesView();
+            GV.Show();
+        }
+        
+        private void Add_Supervisor_Click(object sender, RoutedEventArgs e)
+        {
+            SetGroupSupervisorView GS = new SetGroupSupervisorView();
+            GS.Show();
+        }
+
+        private void View_Supervisors_Click(object sender, RoutedEventArgs e)
+        {
+            GroupSupervisorsView GV = new GroupSupervisorsView();
+            GV.Show();
+        }
+
+        private void View_Punches_Click(object sender, RoutedEventArgs e)
+        {
+            PunchesListView PV = new PunchesListView();
+            PV.Show();
+        }
     }
 }

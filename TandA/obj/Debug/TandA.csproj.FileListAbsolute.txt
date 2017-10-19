@@ -43,3 +43,13 @@ C:\Users\Administrator\Documents\Visual Studio 2017\Projects\TandA\TandA\obj\Deb
 C:\Users\Administrator\Documents\Visual Studio 2017\Projects\TandA\TandA\obj\Debug\Views\CreateAbsenteeismView.g.cs
 C:\Users\Administrator\Documents\Visual Studio 2017\Projects\TandA\TandA\obj\Debug\Views\AbsentListView.baml
 C:\Users\Administrator\Documents\Visual Studio 2017\Projects\TandA\TandA\obj\Debug\Views\CreateAbsenteeismView.baml
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\TandA\TandA\obj\Debug\Views\AddGroupMemberView.g.cs
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\TandA\TandA\obj\Debug\Views\AddGroupMemberView.baml
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\TandA\TandA\obj\Debug\Views\GroupEmployeesView.g.cs
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\TandA\TandA\obj\Debug\Views\GroupEmployeesView.baml
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\TandA\TandA\obj\Debug\Views\SetGroupSupervisorView.g.cs
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\TandA\TandA\obj\Debug\Views\SetGroupSupervisorView.baml
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\TandA\TandA\obj\Debug\Views\GroupSupervisorsView.g.cs
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\TandA\TandA\obj\Debug\Views\GroupSupervisorsView.baml
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\TandA\TandA\obj\Debug\Views\PunchesListView.g.cs
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\TandA\TandA\obj\Debug\Views\PunchesListView.baml

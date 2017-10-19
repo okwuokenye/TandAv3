@@ -1,4 +1,4 @@
-﻿<Window x:Class="TandA.Views.AddGroupMemberView"
+﻿<Window x:Class="TandA.Views.SetGroupSupervisorView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,18 +7,18 @@
         xmlns:local="clr-namespace:TandA.Views"
         mc:Ignorable="d"
        xmlns:Notification="clr-namespace:Syncfusion.Windows.Controls.Notification;assembly=Syncfusion.SfBusyIndicator.WPF"
-        Title="{Binding WindowTitle}" Height="210" Width="310">
+        Title="{Binding WindowTitle}" Height="220" Width="310">
     <Grid Background="AliceBlue">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0">
             <StackPanel HorizontalAlignment="Center" Margin="0 10">
-                <TextBlock Text="Add Employee To Group" FontSize="20" />
+                <TextBlock Text="Group Supervisor" FontSize="20" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="5 5">
                 <TextBlock Text="Select Group(s): " Width="120" />
-                <syncfusion:ComboBoxAdv x:Name="Groups" DisplayMemberPath="GroupRef" DefaultText="Select Group(s)" AllowMultiSelect="True" Width="150" ItemsSource="{Binding Groups}" SelectedItems="{Binding SelectedItems, UpdateSourceTrigger=PropertyChanged}"></syncfusion:ComboBoxAdv>
+                <syncfusion:ComboBoxAdv x:Name="Groups" DisplayMemberPath="GroupRef" DefaultText="Select Group(s)" AllowMultiSelect="False" Width="150" ItemsSource="{Binding Groups}" SelectedItems="{Binding SelectedItems, UpdateSourceTrigger=PropertyChanged}"></syncfusion:ComboBoxAdv>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="5 5">
@@ -27,11 +27,16 @@
 
             </StackPanel>
 
+            <StackPanel Orientation="Horizontal" Margin="5 5">
+                <TextBlock Text="Current Supervisor(s): " Width="120" />
+                <TextBlock Text="N/A" FontWeight="Bold" Width="150" />
+            </StackPanel>
+
 
 
             <StackPanel Orientation="Horizontal" Margin="45 15">
-                <Button Width="80" Margin="10 0" Content="Add" Command="{Binding CreateACode}" />
-                <Button Width="80" Margin="10 0" Content="Exit" Click="Close_Click" />
+                <Button Width="80" Margin="10 0" Content="OK" Command="{Binding CreateACode}" />
+                <Button Width="80" Margin="10 0" Content="EXIT" Click="Close_Click" />
             </StackPanel>
 
         </StackPanel>

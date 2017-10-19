@@ -13,6 +13,7 @@ namespace TandA.Models
         public String Lastname { get; set; }
         public String GroupId { get; set; }
         public String EmailAddress { get; set; }
+        public String NameLabel { get; set; }
 
         public EmployeeModel(String p_EmployeeNumber, String p_Firstname, String p_Lastname, String p_GroupId, String p_EmailAddress)
         {
@@ -21,6 +22,7 @@ namespace TandA.Models
             Lastname = p_Lastname;
             GroupId = p_GroupId;
             EmailAddress = p_EmailAddress;
+            NameLabel = p_Firstname + ", " + p_Lastname + " (" + p_EmployeeNumber + ")";
         }
     }
 }

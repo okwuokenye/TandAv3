@@ -16,21 +16,16 @@ using TandA.ViewModels;
 namespace TandA.Views
 {
     /// <summary>
-    /// Interaction logic for AddGroupMemberView.xaml
+    /// Interaction logic for PunchesListView.xaml
     /// </summary>
-    public partial class AddGroupMemberView : Window
+    public partial class PunchesListView : Window
     {
-        GroupViewModel vm;
-        public AddGroupMemberView()
+        PunchesViewModel vm;
+        public PunchesListView()
         {
             InitializeComponent();
-            vm = new GroupViewModel();
+            vm = new PunchesViewModel();
             base.DataContext = vm;
-        }
-
-        private void Close_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
         }
     }
 }

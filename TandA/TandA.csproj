@@ -86,6 +86,7 @@
     <Compile Include="ViewModels\AbsenteeismViewModel.cs" />
     <Compile Include="ViewModels\EmployeeViewModel.cs" />
     <Compile Include="ViewModels\GroupViewModel.cs" />
+    <Compile Include="ViewModels\PunchesViewModel.cs" />
     <Compile Include="ViewModels\StartScreenViewModel.cs" />
     <Compile Include="Views\AbsentListView.xaml.cs">
       <DependentUpon>AbsentListView.xaml</DependentUpon>
@@ -108,8 +109,20 @@
     <Compile Include="Views\GroupsListView.xaml.cs">
       <DependentUpon>GroupsListView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\GroupSupervisorsView.xaml.cs">
+      <DependentUpon>GroupSupervisorsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PunchesListView.xaml.cs">
+      <DependentUpon>PunchesListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SetGroupSupervisorView.xaml.cs">
+      <DependentUpon>SetGroupSupervisorView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\StartScreen.xaml.cs">
       <DependentUpon>StartScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GroupEmployeesView.xaml.cs">
+      <DependentUpon>GroupEmployeesView.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\AbsentListView.xaml">
       <SubType>Designer</SubType>
@@ -139,6 +152,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\GroupSupervisorsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -151,7 +168,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\PunchesListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SetGroupSupervisorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\StartScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GroupEmployeesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

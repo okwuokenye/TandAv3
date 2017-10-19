@@ -40,19 +40,31 @@ xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
 
                 <syncfusion:RibbonTab Caption="SETTINGS"  IsChecked="False">
                     <syncfusion:RibbonBar Name="GroupMembers" Header="Group Members" Width="200">
-                        <syncfusion:RibbonButton SizeForm="Large" ToolTip="Add Group Member" Click="Add_Absenthiesm_Click" Label="Add Group Member" />
-                        <syncfusion:RibbonButton SizeForm="Small" ToolTip="View Group Members" Click="Absenthiesm_List_Click"  Label="View Group Members" />
+                        <syncfusion:RibbonButton SizeForm="Large" ToolTip="Add Group Member" Click="Add_GroupMember_Click" Label="Add Group Member" />
+                        <syncfusion:RibbonButton SizeForm="Small" ToolTip="View Group Members" Click="View_GroupMembers_Click"  Label="View Group Members" />
                     </syncfusion:RibbonBar>
 
                     <syncfusion:RibbonBar Name="Supervisors" Header="Supervisors" Width="200">
-                        <syncfusion:RibbonButton SizeForm="Large" ToolTip="Add Supervisor" Click="Add_Absenthiesm_Click" Label="Add Supervisor" />
-                        <syncfusion:RibbonButton SizeForm="Small" ToolTip="View Supervisors" Click="Absenthiesm_List_Click"  Label="View Supervisors" />
+                        <syncfusion:RibbonButton SizeForm="Large" ToolTip="Add Supervisor" Click="Add_Supervisor_Click" Label="Add Supervisor" />
+                        <syncfusion:RibbonButton SizeForm="Small" ToolTip="View Supervisors" Click="View_Supervisors_Click"  Label="View Supervisors" />
                     </syncfusion:RibbonBar>
                 </syncfusion:RibbonTab>
 
                 <syncfusion:RibbonTab Caption="SECURITY"  IsChecked="False"/>
 
-                <syncfusion:RibbonTab Caption="PRODUCTION"  IsChecked="False"/>
+                <syncfusion:RibbonTab Caption="PRODUCTION"  IsChecked="False">
+                    <syncfusion:RibbonBar Name="Punches" Header="Punches" Width="200">
+                        <syncfusion:RibbonButton SizeForm="Large" ToolTip="View Punches" Click="View_Punches_Click" Label="View Punches" />
+                        <syncfusion:RibbonButton SizeForm="Small" ToolTip="Old Punches" Click="View_GroupMembers_Click"  Label="Old Punches" />
+                        <syncfusion:RibbonButton SizeForm="Small" ToolTip="HR Report" Click="View_GroupMembers_Click"  Label="HR Report" />
+                        <syncfusion:RibbonButton SizeForm="Small" ToolTip="IN OUT Punches Sequence Errors" Click="View_GroupMembers_Click"  Label="Sequence Errors" />
+
+                    </syncfusion:RibbonBar>
+
+                    <syncfusion:RibbonBar Name="Absenteeism" Header="Absenteeism" Width="200">
+                      
+                    </syncfusion:RibbonBar>
+                </syncfusion:RibbonTab>
 
                 <syncfusion:RibbonTab Caption="LOGOUT"  IsChecked="False"/>
 

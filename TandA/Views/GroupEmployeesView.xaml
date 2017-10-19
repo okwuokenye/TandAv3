@@ -1,0 +1,59 @@
+﻿<Window x:Class="TandA.Views.GroupEmployeesView"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TandA.Views"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf" 
+        mc:Ignorable="d"
+        xmlns:Notification="clr-namespace:Syncfusion.Windows.Controls.Notification;assembly=Syncfusion.SfBusyIndicator.WPF"
+        Title="{Binding WindowTitle}" Height="400" Width="570">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <StackPanel>
+                <Border Background="CornflowerBlue">
+                    <StackPanel>
+                        <TextBlock Text="List Group Employees" Foreground="White" FontSize="30" Margin="5 10 0 0" />
+                        <TextBlock Text="List of all Employees in a specified Group" Foreground="White" FontSize="15" Margin="5 0 0 10" />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10 5">
+                <TextBlock Text="Group:" Width="50" />
+                <syncfusion:ComboBoxAdv DisplayMemberPath="NameLabel" DefaultText="Select Group" AllowMultiSelect="False" Width="150" ItemsSource="{Binding Groups}" ></syncfusion:ComboBoxAdv>
+                <Button Background="Green" Width="100" Foreground="White" Content="Add Employee" Margin="10 0 0 0" />
+                <Button Background="Green" Width="100" Foreground="White" Content="Advanced Search" Margin="10 0 0 0" />
+            </StackPanel>
+        </StackPanel>
+        <DataGrid x:Name="dataGrid" SelectionMode="Single" Grid.Row="1" AutoGenerateColumns="False" SelectionUnit="FullRow"  ItemsSource="{Binding Employees}" SelectedItem="{Binding Employee}" >
+
+            <DataGrid.CellStyle>
+                <Style TargetType="{x:Type DataGridCell}">
+                    <!--<Setter Property="Background" Value="Transparent" />-->
+                </Style>
+            </DataGrid.CellStyle>
+
+            <DataGrid.Columns>
+                <DataGridTemplateColumn CanUserSort="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Width="*" Binding="{Binding EmployeeNumber}" Header="REFERENCE"/>
+                <DataGridTextColumn Width="*" Binding="{Binding Firstname}" Header="FIRSTNAME"/>
+                <DataGridTextColumn Width="2*" Binding="{Binding Lastname}" Header="LASTNAME"/>
+                <DataGridTextColumn Width="*" Header="SUPERVISOR"/>
+            </DataGrid.Columns>
+        </DataGrid>
+       
+
+    </Grid>
+</Window>

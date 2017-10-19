@@ -16,21 +16,16 @@ using TandA.ViewModels;
 namespace TandA.Views
 {
     /// <summary>
-    /// Interaction logic for AddGroupMemberView.xaml
+    /// Interaction logic for GroupSupervisorsView.xaml
     /// </summary>
-    public partial class AddGroupMemberView : Window
+    public partial class GroupSupervisorsView : Window
     {
         GroupViewModel vm;
-        public AddGroupMemberView()
+        public GroupSupervisorsView()
         {
             InitializeComponent();
-            vm = new GroupViewModel();
+            vm = new GroupViewModel(true);
             base.DataContext = vm;
-        }
-
-        private void Close_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
         }
     }
 }

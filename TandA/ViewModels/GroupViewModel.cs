@@ -25,6 +25,7 @@ namespace TandA.ViewModels
         DALEmployee EmployeeDAL = new DALEmployee();
         Visibility _WindowLoaderVisibility = Visibility.Collapsed;
         ObservableCollection<GroupModel> _Groups = new ObservableCollection<GroupModel>();
+        ObservableCollection<EmployeeModel> _Employees = new ObservableCollection<EmployeeModel>();
         GroupModel _Group;
         Boolean _IsEditGroupVisible = false;
         String _GroupRef;
@@ -100,6 +101,11 @@ namespace TandA.ViewModels
                 }
             }
         }
+
+        public ObservableCollection<EmployeeModel> Employees
+        {
+            get { return _Employees; }
+        }
         #endregion
 
         #region Constructors
@@ -115,11 +121,51 @@ namespace TandA.ViewModels
             }
         }
 
+        //overload for list employees in group
+        public GroupViewModel(Boolean IsListGroup)
+        {
+            try
+            {
+                //pass bool parameter for load async overload
+                Load_Async(IsListGroup);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this.ToString() + ".GroupViewModel\n" + ex.Message, "Error");
+            }
+        }
+        
         #endregion
 
 
         #region Private functions
         async void Load_Async()
+        {
+            try
+            {
+                _WindowLoaderVisibility = Visibility.Visible;
+                RaisePropertyChanged("WindowLoaderVisibility");
+                await Task.Run(() =>
+                {
+                    _Groups = AdminDAL.GetGroups();
+                    _Employees = EmployeeDAL.GetEmployees();
+                });
+
+                //Raise property changed for every property in view model
+                foreach (System.Reflection.PropertyInfo p in this.GetType().GetProperties())
+                {
+                    RaisePropertyChanged(p.Name);
+                }
+                _WindowLoaderVisibility = Visibility.Collapsed;
+                RaisePropertyChanged("WindowLoaderVisibility");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this.ToString() + ".Load_Async\n" + ex.Message, "Error");
+            }
+        }
+
+        async void Load_Async(Boolean IsListGroup)
         {
             try
             {

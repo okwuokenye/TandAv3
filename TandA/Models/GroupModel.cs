@@ -12,6 +12,7 @@ namespace TandA.Models
         public String GroupRef { get; set; }
         public String GroupDescription { get; set; }
         public String SupervisorNo { get; set; }
+        public String NameLabel { get; set; }
 
         public GroupModel(Int32 p_Id, String p_GroupRef, String p_GroupDescription, String p_SupervisorNo)
         {
@@ -19,6 +20,7 @@ namespace TandA.Models
             GroupRef = p_GroupRef;
             GroupDescription = p_GroupDescription;
             SupervisorNo = p_SupervisorNo;
+            NameLabel = p_GroupRef + " - " + p_GroupDescription;
         }
     }
 }

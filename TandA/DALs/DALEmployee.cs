@@ -44,7 +44,7 @@ namespace TandA.DALs
                                             
                                             Convert.ToString(reader["EmployeeNo"]),
                                             Convert.ToString(reader["Firstname"]),
-                                            Convert.ToString(reader["EmployeeNo"]),
+                                            Convert.ToString(reader["Lastname"]),
                                             Convert.ToString(reader["GroupId"]),
                                             Convert.ToString(reader["EmailAddress"])
                                             ));

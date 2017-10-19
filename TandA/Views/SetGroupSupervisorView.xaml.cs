@@ -16,12 +16,12 @@ using TandA.ViewModels;
 namespace TandA.Views
 {
     /// <summary>
-    /// Interaction logic for AddGroupMemberView.xaml
+    /// Interaction logic for SetGroupSupervisorView.xaml
     /// </summary>
-    public partial class AddGroupMemberView : Window
+    public partial class SetGroupSupervisorView : Window
     {
         GroupViewModel vm;
-        public AddGroupMemberView()
+        public SetGroupSupervisorView()
         {
             InitializeComponent();
             vm = new GroupViewModel();
