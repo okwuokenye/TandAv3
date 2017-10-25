@@ -16,5 +16,5 @@ C:\Source\Git\TandAv3\TandA\App.xaml
 30-70482673
 Views\AbsentListView.xaml;Views\AddGroupMemberView.xaml;Views\CreateAbsenteeismView.xaml;Views\CreateEmployeeView.xaml;Views\CreateGroupView.xaml;Views\EmployeeAbsenteeismListView.xaml;Views\EmployeeListView.xaml;Views\GroupsListView.xaml;Views\GroupSupervisorsView.xaml;Views\MainWindow.xaml;Views\PunchesListView.xaml;Views\SetGroupSupervisorView.xaml;Views\StartScreen.xaml;Views\GroupEmployeesView.xaml;
 
-False
+True
 
