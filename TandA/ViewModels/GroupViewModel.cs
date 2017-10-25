@@ -31,6 +31,7 @@ namespace TandA.ViewModels
         String _GroupRef;
         String _GroupDesc;
         String _Supervisor;
+        Boolean _IsListGroup = false;
         #endregion
 
         #region Properties
@@ -57,6 +58,10 @@ namespace TandA.ViewModels
                 if (_Group != value)
                 {
                     _Group = value;
+                    if (_IsListGroup)
+                    {
+                        GetEmployeesInGroup();
+                    }
                 }
             }
         }
@@ -105,6 +110,19 @@ namespace TandA.ViewModels
         public ObservableCollection<EmployeeModel> Employees
         {
             get { return _Employees; }
+        }
+
+        public ObservableCollection<EmployeeModel> Supervisors
+        {
+            get
+            {
+                ObservableCollection<EmployeeModel> l_Supervisors = new ObservableCollection<EmployeeModel>();
+                foreach(EmployeeModel _E in _Employees.Where(m => m.MemberType == "Supervisor"))
+                {
+                    l_Supervisors.Add(_E);
+                }
+                return l_Supervisors;
+            }
         }
         #endregion
 
@@ -171,6 +189,8 @@ namespace TandA.ViewModels
             {
                 _WindowLoaderVisibility = Visibility.Visible;
                 RaisePropertyChanged("WindowLoaderVisibility");
+                _IsListGroup = IsListGroup;
+
                 await Task.Run(() =>
                 {
                     _Groups = AdminDAL.GetGroups();
@@ -187,6 +207,30 @@ namespace TandA.ViewModels
             catch (Exception ex)
             {
                 MessageBox.Show(this.ToString() + ".Load_Async\n" + ex.Message, "Error");
+            }
+        }
+
+        async void GetEmployeesInGroup()
+        {
+            try
+            {
+                if(_Group != null)
+                {
+                    _WindowLoaderVisibility = Visibility.Visible;
+                    RaisePropertyChanged("WindowLoaderVisibility");
+                    await Task.Run(() =>
+                    {
+                        _Employees = EmployeeDAL.GetEmployeesInGroup(_Group.GroupRef);
+                        RaisePropertyChanged("Employees");
+                        RaisePropertyChanged("Supervisors");
+                    });
+                    _WindowLoaderVisibility = Visibility.Collapsed;
+                    RaisePropertyChanged("WindowLoaderVisibility");
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(this.ToString() + ".GetEmployeesInGroup\n" + ex.Message, "Error");
             }
         }
         #endregion
@@ -273,6 +317,86 @@ namespace TandA.ViewModels
             }
         }
         public ICommand CreateGroup { get { return new RelayCommand(CreateGroupExecute); } }
+
+        private async void AddEmployeeToGroupExecute(object SelectedEmployees)
+        {
+            try
+            {
+                _WindowLoaderVisibility = Visibility.Visible;
+                RaisePropertyChanged("WindowLoaderVisibility");
+
+                System.Collections.IList items = (System.Collections.IList)SelectedEmployees;
+                IEnumerable<EmployeeModel> l_Employees = items.Cast<EmployeeModel>();
+                String err = String.Empty;
+
+                foreach (var e in l_Employees)
+                {
+                    //insert into groups
+                    await Task.Run(() =>
+                    {
+                        EmployeeDAL.AddEmployeeToGroup(e.EmployeeNumber, _Group.GroupRef);
+                    });
+                }
+
+                MessageBox.Show("Successfully Added Employee(s) to group", "Successful", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                _Group = null;
+                await Task.Run(() =>
+                {
+                    _Employees = EmployeeDAL.GetEmployees();
+                });
+
+                _WindowLoaderVisibility = Visibility.Collapsed;
+                RaisePropertyChanged("WindowLoaderVisibility");
+                RaisePropertyChanged("Group");
+                RaisePropertyChanged("Employees");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this.ToString() + ".AddEmployeeToGroupExecute\n" + ex.Message, "Error");
+            }
+        }
+        public ICommand AddEmployeeToGroup { get { return new RelayCommand<object>(AddEmployeeToGroupExecute); } }
+
+        private async void CreateGroupSupervisorExecute(object SelectedEmployees)
+        {
+            try
+            {
+                _WindowLoaderVisibility = Visibility.Visible;
+                RaisePropertyChanged("WindowLoaderVisibility");
+
+                System.Collections.IList items = (System.Collections.IList)SelectedEmployees;
+                IEnumerable<EmployeeModel> l_Employees = items.Cast<EmployeeModel>();
+                String err = String.Empty;
+
+                foreach (var e in l_Employees)
+                {
+                    //insert into groups
+                    await Task.Run(() =>
+                    {
+                        EmployeeDAL.AddEmployeeToGroupAsSupervisor(e.EmployeeNumber, _Group.GroupRef);
+                    });
+                }
+
+                MessageBox.Show("Successfully Added Supervisor(s) to group", "Successful", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                _Group = null;
+                await Task.Run(() =>
+                {
+                    _Employees = EmployeeDAL.GetEmployees();
+                });
+
+                _WindowLoaderVisibility = Visibility.Collapsed;
+                RaisePropertyChanged("WindowLoaderVisibility");
+                RaisePropertyChanged("Group");
+                RaisePropertyChanged("Employees");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this.ToString() + ".CreateGroupSupervisorExecute\n" + ex.Message, "Error");
+            }
+        }
+        public ICommand CreateGroupSupervisor { get { return new RelayCommand<object>(CreateGroupSupervisorExecute); } }
         #endregion
     }
 }

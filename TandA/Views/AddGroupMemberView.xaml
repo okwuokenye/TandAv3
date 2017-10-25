@@ -18,19 +18,19 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="5 5">
                 <TextBlock Text="Select Group(s): " Width="120" />
-                <syncfusion:ComboBoxAdv x:Name="Groups" DisplayMemberPath="GroupRef" DefaultText="Select Group(s)" AllowMultiSelect="True" Width="150" ItemsSource="{Binding Groups}" SelectedItems="{Binding SelectedItems, UpdateSourceTrigger=PropertyChanged}"></syncfusion:ComboBoxAdv>
+                <ComboBox DisplayMemberPath="GroupRef" Width="150" ItemsSource="{Binding Groups}" SelectedItem="{Binding Group}"></ComboBox>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="5 5">
                 <TextBlock Text="Select Employee(s): " Width="120" />
-                <syncfusion:ComboBoxAdv DisplayMemberPath="NameLabel" DefaultText="Select Employee(s)" AllowMultiSelect="True" Width="150" ItemsSource="{Binding Employees}" ></syncfusion:ComboBoxAdv>
+                <syncfusion:ComboBoxAdv x:Name="Employees" DisplayMemberPath="NameLabel" DefaultText="Select Employee(s)" AllowMultiSelect="True" Width="150" ItemsSource="{Binding Employees}" ></syncfusion:ComboBoxAdv>
 
             </StackPanel>
 
 
 
             <StackPanel Orientation="Horizontal" Margin="45 15">
-                <Button Width="80" Margin="10 0" Content="Add" Command="{Binding CreateACode}" />
+                <Button Width="80" Margin="10 0" Content="Add" Command="{Binding AddEmployeeToGroup}" CommandParameter="{Binding ElementName=Employees, Path=SelectedItems}" />
                 <Button Width="80" Margin="10 0" Content="Exit" Click="Close_Click" />
             </StackPanel>
 

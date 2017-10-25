@@ -43,7 +43,7 @@
 
             <StackPanel Orientation="Horizontal" Margin="5 5">
                 <TextBlock Text="Group: " Width="120" />
-                <syncfusion:ComboBoxAdv x:Name="Groups" DisplayMemberPath="GroupRef" DefaultText="Select Group" AllowMultiSelect="True" Width="150" ItemsSource="{Binding Groups}" SelectedItems="{Binding SelectedItems, UpdateSourceTrigger=PropertyChanged}"></syncfusion:ComboBoxAdv>
+                <syncfusion:ComboBoxAdv x:Name="Groups" DisplayMemberPath="GroupRef" DefaultText="Select Group" AllowMultiSelect="True" Width="150" ItemsSource="{Binding Groups}" SelectedItems="{Binding SelectedItems, UpdateSourceTrigger=PropertyChanged}" ></syncfusion:ComboBoxAdv>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="5 15">

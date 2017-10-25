@@ -24,7 +24,7 @@ namespace TandA.Views
         public SetGroupSupervisorView()
         {
             InitializeComponent();
-            vm = new GroupViewModel();
+            vm = new GroupViewModel(true);
             base.DataContext = vm;
         }
 

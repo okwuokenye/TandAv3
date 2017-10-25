@@ -27,5 +27,11 @@ namespace TandA.Views
             vm = new GroupViewModel(true);
             base.DataContext = vm;
         }
+
+        private void Add_GroupMember_Click(object sender, RoutedEventArgs e)
+        {
+            AddGroupMemberView cG = new AddGroupMemberView();
+            cG.Show();
+        }
     }
 }

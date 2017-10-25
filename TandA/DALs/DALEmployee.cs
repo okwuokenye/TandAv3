@@ -154,5 +154,73 @@ namespace TandA.DALs
                 conn.Close();
             }
         }
+
+        public ObservableCollection<EmployeeModel> GetEmployeesInGroup(String p_GroupRef)
+        {
+            SqlConnection conn = new SqlConnection(ConnectionString);
+
+            try
+            {
+
+                ObservableCollection<EmployeeModel> TheCollection = new ObservableCollection<EmployeeModel>();
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("spTandA_GetEmployeesInGroup", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Reference", p_GroupRef);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+
+                while (reader.Read())
+                {
+
+
+                    TheCollection.Add(new EmployeeModel(
+
+                                            Convert.ToString(reader["EmployeeNo"]),
+                                            Convert.ToString(reader["Firstname"]),
+                                            Convert.ToString(reader["Lastname"]),
+                                            Convert.ToString(reader["GroupId"]),
+                                            Convert.ToString(reader["EmailAddress"]),
+                                            Convert.ToString(reader["MemberStatus"])
+                                            ));
+                }
+
+                return TheCollection;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(this.ToString() + ".GetEmployeesInGroup\n" + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public void AddEmployeeToGroupAsSupervisor(String p_EmployeeNumber, String p_GroupRef)
+        {
+            SqlConnection conn = new SqlConnection(ConnectionString);
+            try
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("spTandA_AddEmployeeToGroup", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@EmployeeNo", p_EmployeeNumber);
+                cmd.Parameters.AddWithValue("@GroupRef", p_GroupRef);
+                cmd.Parameters.AddWithValue("@Type", "Supervisor");
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(this.ToString() + ".AddEmployeeToGroupAsSupervisor\n" + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+        }
+
     }
 }

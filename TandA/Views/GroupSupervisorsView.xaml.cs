@@ -27,5 +27,11 @@ namespace TandA.Views
             vm = new GroupViewModel(true);
             base.DataContext = vm;
         }
+
+        private void Add_Supervisor_Click(object sender, RoutedEventArgs e)
+        {
+            SetGroupSupervisorView GS = new SetGroupSupervisorView();
+            GS.Show();
+        }
     }
 }
