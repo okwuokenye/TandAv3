@@ -49,6 +49,10 @@
     <Reference Include="Syncfusion.SfGrid.WPF, Version=15.3451.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.SfGridConverter.WPF, Version=15.3451.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.SfHubTile.WPF, Version=15.3451.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.SfShared.Wpf, Version=15.3451.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\Syncfusion.SfShared.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="Syncfusion.SfSkinManager.WPF, Version=15.3451.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.Shared.WPF, Version=15.3451.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.Themes.Metro.WPF, Version=15.3451.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
@@ -82,10 +86,13 @@
     <Compile Include="DALs\DALAdmin.cs" />
     <Compile Include="DALs\DALEmployee.cs" />
     <Compile Include="Models\AbsenteeismModel.cs" />
+    <Compile Include="Models\EmployeeAbsenteeismModel.cs" />
     <Compile Include="Models\EmployeeGroupsModel.cs" />
     <Compile Include="Models\EmployeeModel.cs" />
     <Compile Include="Models\GroupModel.cs" />
     <Compile Include="Models\NameValueModel.cs" />
+    <Compile Include="Models\PeriodModel.cs" />
+    <Compile Include="Models\PunchesModel.cs" />
     <Compile Include="ObservableObject.cs" />
     <Compile Include="PropertySupport.cs" />
     <Compile Include="RelayCommand.cs" />
@@ -108,6 +115,9 @@
     </Compile>
     <Compile Include="Views\CreateGroupView.xaml.cs">
       <DependentUpon>CreateGroupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EmployeeAbsenteeismListView.xaml.cs">
+      <DependentUpon>EmployeeAbsenteeismListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\EmployeeListView.xaml.cs">
       <DependentUpon>EmployeeListView.xaml</DependentUpon>
@@ -147,6 +157,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CreateGroupView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EmployeeAbsenteeismListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -222,7 +236,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\icon.png" />
-    <Content Include="DLL\Syncfusion.Compression.Base.dll" />
     <Content Include="DLL\Syncfusion.Data.WPF.dll" />
     <Content Include="DLL\Syncfusion.Pdf.Base.dll" />
     <Content Include="DLL\Syncfusion.Pdf.WPF.dll" />
@@ -230,7 +243,9 @@
     <Content Include="DLL\Syncfusion.SfGrid.WPF.dll" />
     <Content Include="DLL\Syncfusion.SfGridConverter.WPF.dll" />
     <Content Include="DLL\Syncfusion.SfHubTile.WPF.dll" />
-    <Content Include="DLL\Syncfusion.SfShared.Wpf.dll" />
+    <Content Include="DLL\Syncfusion.SfShared.Wpf.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="DLL\Syncfusion.SfSkinManager.WPF.dll" />
     <Content Include="DLL\Syncfusion.Shared.WPF.dll" />
     <Content Include="DLL\Syncfusion.Themes.Metro.WPF.dll" />

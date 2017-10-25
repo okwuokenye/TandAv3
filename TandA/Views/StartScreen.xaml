@@ -62,7 +62,8 @@ xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
                     </syncfusion:RibbonBar>
 
                     <syncfusion:RibbonBar Name="Absenteeism" Header="Absenteeism" Width="200">
-                      
+                        <syncfusion:RibbonButton SizeForm="Large" ToolTip="View Absenteeism" Click="View_Absenteeism_Click" Label="View" />
+                        <syncfusion:RibbonButton SizeForm="Small" ToolTip="Add New Absenteeism" Click="AddNew_Absenteeism_Click"  Label="Add New" />
                     </syncfusion:RibbonBar>
                 </syncfusion:RibbonTab>
 

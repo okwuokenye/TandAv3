@@ -94,5 +94,15 @@ namespace TandA.Views
             PunchesListView PV = new PunchesListView();
             PV.Show();
         }
+
+        private void View_Absenteeism_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddNew_Absenteeism_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

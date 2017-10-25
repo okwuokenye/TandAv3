@@ -8,7 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dll/syncfusion.compression.base.dll")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dll/syncfusion.data.wpf.dll")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dll/syncfusion.pdf.base.dll")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dll/syncfusion.pdf.wpf.dll")]

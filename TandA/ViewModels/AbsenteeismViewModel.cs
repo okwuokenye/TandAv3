@@ -25,11 +25,17 @@ namespace TandA.ViewModels
         Visibility _WindowLoaderVisibility = Visibility.Collapsed;
         ObservableCollection<AbsenteeismModel> _ACodes = new ObservableCollection<AbsenteeismModel>();
         AbsenteeismModel _ACode;
-
+        
         String _Reference;
         String _Description;
         String _Abbreviation;
         Boolean _IsEditACodeVisible = false;
+
+        ObservableCollection<EmployeeAbsenteeismModel> _Absents = new ObservableCollection<EmployeeAbsenteeismModel>();
+        EmployeeAbsenteeismModel _Absent;
+
+        Boolean _IsListView = false;
+
         #endregion
 
         #region Properties
@@ -114,6 +120,19 @@ namespace TandA.ViewModels
                 MessageBox.Show(this.ToString() + ".AbsenteeismViewModel\n" + ex.Message, "Error");
             }
         }
+
+        public AbsenteeismViewModel(Boolean IsListView)
+        {
+            try
+            {
+                _IsListView = IsListView;
+                Load_Async();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this.ToString() + ".AbsenteeismViewModel\n" + ex.Message, "Error");
+            }
+        }
         #endregion
 
 
@@ -124,10 +143,21 @@ namespace TandA.ViewModels
             {
                 _WindowLoaderVisibility = Visibility.Visible;
                 RaisePropertyChanged("WindowLoaderVisibility");
-                await Task.Run(() =>
+                
+                //check if mood is to view employee absenteeism or absenteeism settings
+                if (_IsListView)
                 {
-                    _ACodes = AdminDAL.GetACodes();
-                });
+                    await Task.Run(() =>
+                    {
+                        //populate absents
+                    });
+                }else
+                {
+                    await Task.Run(() =>
+                    {
+                        _ACodes = AdminDAL.GetACodes();
+                    });
+                }
 
                 //Raise property changed for every property in view model
                 foreach (System.Reflection.PropertyInfo p in this.GetType().GetProperties())
@@ -142,7 +172,7 @@ namespace TandA.ViewModels
                 MessageBox.Show(this.ToString() + ".Load_Async\n" + ex.Message, "Error");
             }
         }
-
+        
         async void Refresh()
         {
             try

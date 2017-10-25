@@ -1,5 +1,5 @@
-﻿<Window x:Class="TandA.Views.PunchesListView"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<Window x:Class="TandA.Views.EmployeeAbsenteeismListView"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -20,11 +20,10 @@
                 <Border Background="CornflowerBlue">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Employees Master" Foreground="White" FontSize="30" Margin="5 10 0 0" />
-                            <TextBlock Text="Period: today - tomorrow" HorizontalAlignment="Right" Foreground="White" FontSize="20" Margin="150 15 0 0" />
+                            <TextBlock Text="Absenteeism Master" Foreground="White" FontSize="30" Margin="5 10 0 0" />
                         </StackPanel>
-                       <TextBlock Text="List of all Employees" Foreground="White" FontSize="15" Margin="5 0 20 10" />
-                   </StackPanel>
+                        <TextBlock Text="List of all Employees Absenteeism" Foreground="White" FontSize="15" Margin="5 0 20 10" />
+                    </StackPanel>
                 </Border>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="10 5">
@@ -35,7 +34,7 @@
                 <Button Background="Green" Width="100" Foreground="White" Content="Advanced Search" Margin="10 0 0 0" />
             </StackPanel>
         </StackPanel>
-        <DataGrid x:Name="dataGrid" SelectionMode="Single" Grid.Row="1" AutoGenerateColumns="False" SelectionUnit="FullRow"  ItemsSource="{Binding Employees}" SelectedItem="{Binding Employee}" >
+        <DataGrid x:Name="dataGrid" SelectionMode="Single" Grid.Row="1" AutoGenerateColumns="False" SelectionUnit="FullRow"  ItemsSource="{Binding Absents}" SelectedItem="{Binding Absent}" >
 
             <DataGrid.CellStyle>
                 <Style TargetType="{x:Type DataGridCell}">
@@ -52,9 +51,12 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTextColumn Width="*" Binding="{Binding EmployeeNumber}" Header="EMP ID"/>
-                <DataGridTextColumn Width="2*" Binding="{Binding Lastname}" Header="LAST NAME"/>
-                <DataGridTextColumn Width="2*" Binding="{Binding Firstname}" Header="FIRST NAME"/>
-                <DataGridTextColumn Width="2*" Binding="{Binding EmailAddress}" Header="EMAIL ADDRESS"/>
+                <DataGridTextColumn Width="2*" Binding="{Binding EmployeeName}" Header="NAME"/>
+                <DataGridTextColumn Width="*" Binding="{Binding DateAbsent}" Header="DATE ABSENT"/>
+                <DataGridTextColumn Width="*" Binding="{Binding TimeAbsent}" Header="TIME ABSENT"/>
+                <DataGridTextColumn Width="*" Binding="{Binding TimeTo}" Header="TIME TO"/>
+                <DataGridTextColumn Width="*" Binding="{Binding AbsentRef}" Header="ABSENT REF"/>
+                <DataGridTextColumn Width="2*" Binding="{Binding Note}" Header="NOTE"/>
             </DataGrid.Columns>
         </DataGrid>
 

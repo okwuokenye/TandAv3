@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Administrator\Documents\Visual Studio 2017\Projects\TandA\TandA\obj\Debug\
+C:\Source\Git\TandAv3\TandA\obj\Debug\
 TandA
 none
 false
 DEBUG;TRACE
-C:\Users\Administrator\Documents\Visual Studio 2017\Projects\TandA\TandA\App.xaml
-13841214042
-17-357031495
-36-239934056
-29-1333439860
-Views\AbsentListView.xaml;Views\AddGroupMemberView.xaml;Views\CreateAbsenteeismView.xaml;Views\CreateEmployeeView.xaml;Views\CreateGroupView.xaml;Views\EmployeeListView.xaml;Views\GroupsListView.xaml;Views\GroupSupervisorsView.xaml;Views\MainWindow.xaml;Views\PunchesListView.xaml;Views\SetGroupSupervisorView.xaml;Views\StartScreen.xaml;Views\GroupEmployeesView.xaml;
+C:\Source\Git\TandAv3\TandA\App.xaml
+14686544571
+16797375949
+40941382271
+30-70482673
+Views\AbsentListView.xaml;Views\AddGroupMemberView.xaml;Views\CreateAbsenteeismView.xaml;Views\CreateEmployeeView.xaml;Views\CreateGroupView.xaml;Views\EmployeeAbsenteeismListView.xaml;Views\EmployeeListView.xaml;Views\GroupsListView.xaml;Views\GroupSupervisorsView.xaml;Views\MainWindow.xaml;Views\PunchesListView.xaml;Views\SetGroupSupervisorView.xaml;Views\StartScreen.xaml;Views\GroupEmployeesView.xaml;
 
-True
+False
 
