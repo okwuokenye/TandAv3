@@ -97,7 +97,8 @@ namespace TandA.Views
 
         private void View_Absenteeism_Click(object sender, RoutedEventArgs e)
         {
-
+            EmployeeAbsenteeismListView EAL = new EmployeeAbsenteeismListView();
+            EAL.Show();
         }
 
         private void AddNew_Absenteeism_Click(object sender, RoutedEventArgs e)

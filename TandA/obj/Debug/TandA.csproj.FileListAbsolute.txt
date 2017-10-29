@@ -109,3 +109,7 @@ C:\Source\Git\TandAv3\TandA\obj\Debug\TandA.Properties.Resources.resources
 C:\Source\Git\TandAv3\TandA\obj\Debug\TandA.csproj.GenerateResource.Cache
 C:\Source\Git\TandAv3\TandA\obj\Debug\TandA.exe
 C:\Source\Git\TandAv3\TandA\obj\Debug\TandA.pdb
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\TandA\TandA\bin\Debug\DLL\Syncfusion.SfShared.Wpf.dll
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\TandA\TandA\bin\Debug\Syncfusion.Compression.Base.xml
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\TandA\TandA\obj\Debug\Views\EmployeeAbsenteeismListView.g.cs
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\TandA\TandA\obj\Debug\Views\EmployeeAbsenteeismListView.baml

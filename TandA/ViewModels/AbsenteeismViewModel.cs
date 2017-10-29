@@ -35,7 +35,13 @@ namespace TandA.ViewModels
         EmployeeAbsenteeismModel _Absent;
 
         Boolean _IsListView = false;
+        Boolean _IsCreateEmployeeAbsenteeismVisible = false;
+        ObservableCollection<EmployeeModel> _Employees = new ObservableCollection<EmployeeModel>();
+        EmployeeModel _Employee;
 
+        DateTime _DateAbsent = DateTime.Now;
+        DateTime _DateReturned = DateTime.Now;
+        String _Note;
         #endregion
 
         #region Properties
@@ -106,6 +112,81 @@ namespace TandA.ViewModels
         {
             get { return _IsEditACodeVisible ? Visibility.Visible : Visibility.Collapsed; }
         }
+
+        public Visibility IsCreateEmployeeAbsenteeismVisible
+        {
+            get { return _IsCreateEmployeeAbsenteeismVisible ? Visibility.Visible : Visibility.Collapsed; }
+        }
+
+        public ObservableCollection<EmployeeAbsenteeismModel> Absents
+        {
+            get { return _Absents; }
+        }
+
+        public EmployeeAbsenteeismModel Absent
+        {
+            get { return _Absent; }
+            set
+            {
+                if (_Absent != value)
+                {
+                    _Absent = value;
+                }
+            }
+        }
+
+        public ObservableCollection<EmployeeModel> Employees
+        {
+            get { return _Employees; }
+        }
+
+        public EmployeeModel Employee
+        {
+            get { return _Employee; }
+            set
+            {
+                if (_Employee != value)
+                {
+                    _Employee = value;
+                }
+            }
+        }
+
+        public DateTime DateAbsent
+        {
+            get { return _DateAbsent; }
+            set
+            {
+                if (_DateAbsent != value)
+                {
+                    _DateAbsent = value;
+                }
+            }
+        }
+        
+        public DateTime DateReturned
+        {
+            get { return _DateReturned; }
+            set
+            {
+                if (_DateReturned != value)
+                {
+                    _DateReturned = value;
+                }
+            }
+        }
+
+        public String Note
+        {
+            get { return _Note; }
+            set
+            {
+                if (_Note != value)
+                {
+                    _Note = value;
+                }
+            }
+        }
         #endregion
 
         #region Constructors
@@ -143,22 +224,21 @@ namespace TandA.ViewModels
             {
                 _WindowLoaderVisibility = Visibility.Visible;
                 RaisePropertyChanged("WindowLoaderVisibility");
-                
+
+                await Task.Run(() =>
+                {
+                    _ACodes = AdminDAL.GetACodes();
+                });
                 //check if mood is to view employee absenteeism or absenteeism settings
                 if (_IsListView)
                 {
                     await Task.Run(() =>
                     {
                         //populate absents
-                    });
-                }else
-                {
-                    await Task.Run(() =>
-                    {
-                        _ACodes = AdminDAL.GetACodes();
+                        _Absents = AdminDAL.GetEmployeeAbsenteeism();
+                        _Employees = EmployeeDAL.GetEmployees();
                     });
                 }
-
                 //Raise property changed for every property in view model
                 foreach (System.Reflection.PropertyInfo p in this.GetType().GetProperties())
                 {
@@ -298,6 +378,58 @@ namespace TandA.ViewModels
             }
         }
         public ICommand CreateACode { get { return new RelayCommand(CreateACodeExecute); } }
+
+        private void AddNewAbsenteeismExecute()
+        {
+            _IsCreateEmployeeAbsenteeismVisible = true;
+            RaisePropertyChanged("IsCreateEmployeeAbsenteeismVisible");
+        }
+        public ICommand AddNewAbsenteeism { get { return new RelayCommand(AddNewAbsenteeismExecute); } }
+
+        private async void CreateEmployeeAbsenteeismExecute()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    AdminDAL.CreateEmployeeAbsenteeism(_Employee.EmployeeNumber, _DateAbsent, _DateReturned, _ACode.Reference, _Note);
+                });
+                _Absents.Clear();
+
+                await Task.Run(() =>
+                {
+                    //populate absents
+                    _Absents = AdminDAL.GetEmployeeAbsenteeism();
+                });
+
+                _IsCreateEmployeeAbsenteeismVisible = false;
+                _Employee = null;
+                _DateAbsent = DateTime.Now;
+                _DateReturned = DateTime.Now;
+                _ACode = null;
+                _Note = null;
+                RaisePropertyChanged("Absents");
+                RaisePropertyChanged("Employee");
+                RaisePropertyChanged("DateAbsent");
+                RaisePropertyChanged("DateReturned");
+                RaisePropertyChanged("ACode");
+                RaisePropertyChanged("Note");
+                RaisePropertyChanged("IsCreateEmployeeAbsenteeismVisible");
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this.ToString() + ".CreateEmployeeAbsenteeismExecute\n" + ex.Message, "Error");
+            }
+        }
+        public ICommand CreateEmployeeAbsenteeism { get { return new RelayCommand(CreateEmployeeAbsenteeismExecute); } }
+
+        private void CloseCreateEmployeeAbsenteeismExecute()
+        {
+            _IsCreateEmployeeAbsenteeismVisible = false;
+            RaisePropertyChanged("IsCreateEmployeeAbsenteeismVisible");
+        }
+        public ICommand CloseCreateEmployeeAbsenteeism { get { return new RelayCommand(CloseCreateEmployeeAbsenteeismExecute); } }
         #endregion
     }
 }

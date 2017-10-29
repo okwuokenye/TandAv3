@@ -28,7 +28,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="10 5">
                 <TextBox Width="100" />
-                <Button Background="Green" Width="80" Foreground="White" Content="Columns" Margin="10 0 0 0" />
+                <Button Background="Green" Width="80" Foreground="White" Content="Add New" Command="{Binding AddNewAbsenteeism}" Margin="10 0 0 0" />
                 <Button Background="Green" Width="80" Foreground="White" Content="Sorting" Margin="10 0 0 0" />
                 <Button Background="Green" Width="80" Foreground="White" Content="Export" Margin="10 0 0 0" />
                 <Button Background="Green" Width="100" Foreground="White" Content="Advanced Search" Margin="10 0 0 0" />
@@ -61,7 +61,7 @@
         </DataGrid>
 
         <!-- New Absentee record Popup -->
-        <Grid Visibility="{Binding IsUpdatePunchVisible}" Grid.RowSpan="3">
+        <Grid Visibility="{Binding IsCreateEmployeeAbsenteeismVisible}" Grid.RowSpan="3">
             <Grid Background="Black" Opacity="0.2" />
             <Border Background="AliceBlue" BorderBrush="#606366" BorderThickness="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 100">
                 <Grid Background="AliceBlue" Width="400">
@@ -84,29 +84,30 @@
 
                         <StackPanel Orientation="Horizontal" Margin="5 5">
                             <TextBlock Text="Time Absent: " Margin="0 5" Width="120" />
-                            <TextBox Width="150" Text="{Binding TimeAbsent}" />
+                            <!--<TextBox Width="150" Text="{Binding TimeAbsent}" />-->
+                            <syncfusion:DateTimeEdit x:Name="dateTimeEdit" Height="25" Width="150"  DateTime="{Binding DateAbsent}" EnableClassicStyle="True" IsCalendarEnabled="False" IsWatchEnabled="True" IsEmptyDateEnabled="False" Pattern="CustomPattern" CustomPattern="hh:mm"></syncfusion:DateTimeEdit>
                             <TextBlock Text="hh:mm" Margin="5 5" />
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal" Margin="5 5">
                             <TextBlock Text="Time To: " Margin="0 5" Width="120" />
-                            <TextBox Width="150" Text="{Binding TimeTo}" />
+                            <syncfusion:DateTimeEdit Height="25" Width="150"  DateTime="{Binding DateReturned}" EnableClassicStyle="True" IsCalendarEnabled="False" IsWatchEnabled="True" IsEmptyDateEnabled="False" Pattern="CustomPattern" CustomPattern="hh:mm"></syncfusion:DateTimeEdit>
                             <TextBlock Text="hh:mm" Margin="5 5" />
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal" Margin="5 5">
                             <TextBlock Text="Absent Ref: " Margin="0 5" Width="120" />
-                            <ComboBox ItemsSource="{Binding ACodes}" SelectedItem="{Binding Acode}" Width="150" Margin="0 0" DisplayMemberPath="NameLabel"/>
+                            <ComboBox ItemsSource="{Binding ACodes}" SelectedItem="{Binding ACode}" Width="150" Margin="0 0" DisplayMemberPath="Reference"/>
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal" Margin="5 5">
                             <TextBlock Text="Note: " Margin="0 5" Width="120" />
-                            <TextBox Width="250" Text="{Binding TimeTo}" Height="50" />
+                            <TextBox Width="250" Text="{Binding Note}" Height="50" />
                         </StackPanel>
                         
                         <StackPanel Orientation="Horizontal" Margin="125 15 0 15">
-                            <Button Width="80" Margin="10 0" Content="Add" Command="{Binding UpdatePunch}" />
-                            <Button Width="80" Margin="10 0" Content="Cancel" Command="{Binding CloseUpdatePunch}" />
+                            <Button Width="80" Margin="10 0" Content="Add" Command="{Binding CreateEmployeeAbsenteeism}" />
+                            <Button Width="80" Margin="10 0" Content="Cancel" Command="{Binding CloseCreateEmployeeAbsenteeism}" />
                         </StackPanel>
 
                     </StackPanel>

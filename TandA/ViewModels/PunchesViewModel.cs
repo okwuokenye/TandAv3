@@ -32,10 +32,10 @@ namespace TandA.ViewModels
         Boolean _IsAddPunchVisible = false;
         DateTime _LoginDate = DateTime.Now;
         String _LoginTime = String.Empty;
-        ObservableCollection<String> _RecTypes = new ObservableCollection<String>();
+        ObservableCollection<String> _RecTypes = new ObservableCollection<String>() { "IN", "OUT"};
         String _RecType = String.Empty;
         Boolean _IsUpdatePunchVisible = false;
-
+        PeriodModel _Period;
         #endregion
 
         #region Properties
@@ -95,7 +95,7 @@ namespace TandA.ViewModels
 
         public DateTime LoginDate
         {
-            get { return _LoginDate; }
+            get { return _LoginDate.Date; }
             set
             {
                 if (_LoginDate != value)
@@ -134,6 +134,10 @@ namespace TandA.ViewModels
             }
         }
 
+        public String PeriodText
+        {
+            get { return "Period: " + (_Period != null ? ( _Period.StartDate.Date.ToShortDateString() + " - " + _Period.EndDate.Date.ToShortDateString()) : "n/a"); }
+        }
         public Visibility IsUpdatePunchVisible
         {
             get { return _IsUpdatePunchVisible ? Visibility.Visible : Visibility.Collapsed; }
@@ -165,6 +169,7 @@ namespace TandA.ViewModels
                 await Task.Run(() =>
                 {
                     _Employees = EmployeeDAL.GetEmployees();
+                    _Period = AdminDAL.GetCurrentPeriodDetail();
                 });
 
                 //Raise property changed for every property in view model
@@ -194,10 +199,11 @@ namespace TandA.ViewModels
                 await Task.Run(() =>
                 {
                     //get the punches for the stipulated period and employee
-                   
+                    _Punches = AdminDAL.GetEmployeePunches(_Employee.EmployeeNumber, _Period.ID);
                 });
                 _IsViewPunchVisible = true;
                 RaisePropertyChanged("IsViewPunchVisible");
+                RaisePropertyChanged("Punches");
             }
             catch(Exception ex)
             {
@@ -209,7 +215,7 @@ namespace TandA.ViewModels
         private void CloseViewPunchesExecute()
         {
             _IsViewPunchVisible = false;
-            RaisePropertyChanged("IsPunchesViewVisible");
+            RaisePropertyChanged("IsViewPunchVisible");
         }
         public ICommand CloseViewPunches { get { return new RelayCommand(CloseViewPunchesExecute); } }
 
@@ -224,10 +230,23 @@ namespace TandA.ViewModels
         {
             try
             {
+                _Punches.Clear();
                 await Task.Run(() =>
                 {
-
+                    AdminDAL.CreateEmployeePunch(_Employee.EmployeeNumber, _LoginDate, _LoginTime, _Period.ID, _RecType);
+                    _Punches = AdminDAL.GetEmployeePunches(_Employee.EmployeeNumber, _Period.ID);
                 });
+
+                MessageBox.Show("Successfully added employee punch", "Successful", MessageBoxButton.OK, MessageBoxImage.Information);
+                _IsAddPunchVisible = false;
+                _LoginDate = DateTime.Now;
+                _LoginTime = "";
+                _RecType = null;
+                RaisePropertyChanged("IsAddPunchVisible");
+                RaisePropertyChanged("LoginDate");
+                RaisePropertyChanged("LoginTime");
+                RaisePropertyChanged("RecType");
+                RaisePropertyChanged("Punches");
             }
             catch(Exception ex)
             {
