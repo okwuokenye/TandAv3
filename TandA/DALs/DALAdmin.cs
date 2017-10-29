@@ -312,6 +312,7 @@ namespace TandA.DALs
                     TheCollection.Add(new EmployeeAbsenteeismModel(
                                     Convert.ToInt32(reader["Id"]),
                                     Convert.ToString(reader["EmployeeNo"]),
+                                    Convert.ToString(reader["EmployeeName"]),
                                     Convert.ToDateTime(reader["DateAbsent"]),
                                     Convert.ToDateTime(reader["DateAbsent"]),
                                     Convert.ToDateTime(reader["DateReturned"]),

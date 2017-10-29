@@ -55,15 +55,15 @@ xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
                 <syncfusion:RibbonTab Caption="PRODUCTION"  IsChecked="False">
                     <syncfusion:RibbonBar Name="Punches" Header="Punches" Width="200">
                         <syncfusion:RibbonButton SizeForm="Large" ToolTip="View Punches" Click="View_Punches_Click" Label="View Punches" />
-                        <syncfusion:RibbonButton SizeForm="Small" ToolTip="Old Punches" Click="View_GroupMembers_Click"  Label="Old Punches" />
+                        <!--<syncfusion:RibbonButton SizeForm="Small" ToolTip="Old Punches" Click="View_GroupMembers_Click"  Label="Old Punches" />-->
                         <syncfusion:RibbonButton SizeForm="Small" ToolTip="HR Report" Click="View_GroupMembers_Click"  Label="HR Report" />
-                        <syncfusion:RibbonButton SizeForm="Small" ToolTip="IN OUT Punches Sequence Errors" Click="View_GroupMembers_Click"  Label="Sequence Errors" />
+                        <!--<syncfusion:RibbonButton SizeForm="Small" ToolTip="IN OUT Punches Sequence Errors" Click="View_GroupMembers_Click"  Label="Sequence Errors" />-->
 
                     </syncfusion:RibbonBar>
 
                     <syncfusion:RibbonBar Name="Absenteeism" Header="Absenteeism" Width="200">
                         <syncfusion:RibbonButton SizeForm="Large" ToolTip="View Absenteeism" Click="View_Absenteeism_Click" Label="View" />
-                        <syncfusion:RibbonButton SizeForm="Small" ToolTip="Add New Absenteeism" Click="AddNew_Absenteeism_Click"  Label="Add New" />
+                        <!--<syncfusion:RibbonButton SizeForm="Small" ToolTip="Add New Absenteeism" Click="AddNew_Absenteeism_Click"  Label="Add New" />-->
                     </syncfusion:RibbonBar>
                 </syncfusion:RibbonTab>
 
@@ -99,7 +99,7 @@ xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
 
                 </syncfusion:Ribbon.BackStage>
             </syncfusion:Ribbon>
-            <Button Content="Hello" />
+            
         </StackPanel>
     </Grid>
 </syncfusion:RibbonWindow>
