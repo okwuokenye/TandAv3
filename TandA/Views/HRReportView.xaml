@@ -1,0 +1,31 @@
+﻿<Window x:Class="TandA.Views.HRReportView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TandA.Views"
+        mc:Ignorable="d"
+        Title="HRReportView" Height="950" Width="1370">
+    <Grid Background="AliceBlue">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <ScrollViewer Height="870">
+            <ItemsControl ItemsSource="{Binding HRRItems}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <TextBlock HorizontalAlignment="Left" Margin="0 10 0 0" Text="{Binding GroupName}" Width="200" FontWeight="Bold"/>
+                            <DataGrid Grid.Row="1" Background="Aqua" ColumnWidth="*" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" Height="auto" Width="auto" ItemsSource="{Binding HRR}" />
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</Window>

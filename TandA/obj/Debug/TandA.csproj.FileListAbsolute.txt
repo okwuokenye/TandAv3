@@ -113,3 +113,7 @@ C:\Users\Administrator\Documents\Visual Studio 2017\Projects\TandA\TandA\bin\Deb
 C:\Users\Administrator\Documents\Visual Studio 2017\Projects\TandA\TandA\bin\Debug\Syncfusion.Compression.Base.xml
 C:\Users\Administrator\Documents\Visual Studio 2017\Projects\TandA\TandA\obj\Debug\Views\EmployeeAbsenteeismListView.g.cs
 C:\Users\Administrator\Documents\Visual Studio 2017\Projects\TandA\TandA\obj\Debug\Views\EmployeeAbsenteeismListView.baml
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\TandA\TandA\obj\Debug\Views\HRReportView.g.cs
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\TandA\TandA\obj\Debug\Views\HRReportView.baml
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\TandA\TandA\obj\Debug\Views\SelectPayPeriodView.g.cs
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\TandA\TandA\obj\Debug\Views\SelectPayPeriodView.baml

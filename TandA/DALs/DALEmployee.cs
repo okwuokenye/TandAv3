@@ -61,7 +61,7 @@ namespace TandA.DALs
             }
         }
 
-        public String CreateEmployee(String p_EmployeeNumber, SecureString p_Password, String p_Firstname, String p_Lastname, String p_EmailAddress)
+        public String CreateEmployee(String p_EmployeeNumber, String p_Password, String p_Firstname, String p_Lastname, String p_EmailAddress)
         {
             SqlConnection conn = new SqlConnection(ConnectionString);
             String strError = "";
@@ -71,7 +71,7 @@ namespace TandA.DALs
                 SqlCommand cmd = new SqlCommand("spTandA_CreateEmployees", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@EmployeeNo", p_EmployeeNumber);
-                cmd.Parameters.AddWithValue("@PasswordEncrypt", p_Password.ToString());
+                cmd.Parameters.AddWithValue("@PasswordEncrypt", p_Password);
                 cmd.Parameters.AddWithValue("@Firstname", p_Firstname);
                 cmd.Parameters.AddWithValue("@Lastname", p_Lastname);
                 cmd.Parameters.AddWithValue("@EmailAddress", p_EmailAddress);
@@ -212,6 +212,78 @@ namespace TandA.DALs
             catch (Exception ex)
             {
                 throw new Exception(this.ToString() + ".AddEmployeeToGroupAsSupervisor\n" + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+        }
+
+        public void UpdateEmployee(String p_EmployeeNumber, String p_Password, String p_Firstname, String p_Lastname, String p_EmailAddress)
+        {
+            SqlConnection conn = new SqlConnection(ConnectionString);
+            
+            try
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("spTandA_UpdateEmployees", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@EmployeeNo", p_EmployeeNumber);
+                cmd.Parameters.AddWithValue("@PasswordEncrypt", p_Password);
+                cmd.Parameters.AddWithValue("@Firstname", p_Firstname);
+                cmd.Parameters.AddWithValue("@Lastname", p_Lastname);
+                cmd.Parameters.AddWithValue("@EmailAddress", p_EmailAddress);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(this.ToString() + ".UpdateEmployee\n" + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public void DeleteEmployee(String p_EmployeeNumber)
+        {
+            SqlConnection conn = new SqlConnection(ConnectionString);
+
+            try
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("spTandA_DeleteEmployees", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@EmployeeNo", p_EmployeeNumber);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(this.ToString() + ".DeleteEmployee\n" + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public void RemoveEmployeeFromGroup(String p_EmployeeNumber, String p_GroupRef)
+        {
+            SqlConnection conn = new SqlConnection(ConnectionString);
+            try
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("spTandA_RemoveEmployeeFromGroup", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@EmployeeNo", p_EmployeeNumber);
+                cmd.Parameters.AddWithValue("@GroupRef", p_GroupRef);
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(this.ToString() + ".RemoveEmployeeFromGroup\n" + ex.Message);
             }
             finally
             {

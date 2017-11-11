@@ -18,27 +18,27 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="5 5">
                 <TextBlock Text="Employee Number: " Width="120" />
-                <TextBox Width="100" Text="{Binding EmployeeNumber}" />
+                <TextBox Width="100" Text="{Binding EmployeeNumber, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="5 5">
                 <TextBlock Text="Password: " Width="120" />
-                <PasswordBox Width="100" PasswordChanged="PasswordBox_PasswordChanged" />
+                <TextBox Width="100" Text="{Binding SecurePassword}" />
             </StackPanel>
             
             <StackPanel Orientation="Horizontal" Margin="5 5">
                 <TextBlock Text="First Name: " Width="120" />
-                <TextBox Width="150" Text="{Binding Firstname}" />
+                <TextBox Width="150" Text="{Binding Firstname, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="5 5">
                 <TextBlock Text="Last Name: " Width="120" />
-                <TextBox Width="150" Text="{Binding Lastname}" />
+                <TextBox Width="150" Text="{Binding Lastname, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="5 5">
                 <TextBlock Text="Email Address: " Width="120" />
-                <TextBox Width="150" Text="{Binding EmailAddress}" />
+                <TextBox Width="150" Text="{Binding EmailAddress, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="5 5">
@@ -47,7 +47,7 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="5 15">
-                <Button Width="80" Margin="40 0" Content="Create" Command="{Binding CreateEmployee}" CommandParameter="{Binding ElementName=Groups, Path=SelectedItems}" />
+                <Button Width="80" IsEnabled="{Binding IsCreateEmployeeEnabled}" Margin="40 0" Content="Create" Command="{Binding CreateEmployee}" CommandParameter="{Binding ElementName=Groups, Path=SelectedItems}" />
                 <Button Width="80" Margin="10 0" Content="Exit" Click="Close_Button_Clicked" />
             </StackPanel>
 

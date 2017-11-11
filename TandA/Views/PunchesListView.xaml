@@ -74,10 +74,9 @@
                         </StackPanel>
                         <StackPanel Margin="10 10" Orientation="Horizontal">
                             <TextBlock Text="Employee Name: " Width="100" FontWeight="Bold"/>
-                            <TextBlock Text="James Bond " Width="150" />
+                            <TextBlock Text="{Binding EmployeeName}" Width="150" />
 
-                            <TextBlock Text="{Binding PeriodText}" Width="100" FontWeight="Bold"/>
-                            <TextBlock Text="Today - tomorrow " Width="150" />
+                            <TextBlock Text="{Binding PeriodText}" Width="250" FontWeight="Bold"/>
                         </StackPanel>
                         <StackPanel Margin="0 10" Orientation="Horizontal" HorizontalAlignment="Center">
                             <Button Background="Green" Width="80" Foreground="White" Content="Add New" Command="{Binding AddNewPunch}" Margin="10 0 0 0" />

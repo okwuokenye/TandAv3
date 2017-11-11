@@ -56,7 +56,7 @@ xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
                     <syncfusion:RibbonBar Name="Punches" Header="Punches" Width="200">
                         <syncfusion:RibbonButton SizeForm="Large" ToolTip="View Punches" Click="View_Punches_Click" Label="View Punches" />
                         <!--<syncfusion:RibbonButton SizeForm="Small" ToolTip="Old Punches" Click="View_GroupMembers_Click"  Label="Old Punches" />-->
-                        <syncfusion:RibbonButton SizeForm="Small" ToolTip="HR Report" Click="View_GroupMembers_Click"  Label="HR Report" />
+                        <syncfusion:RibbonButton SizeForm="Small" ToolTip="HR Report" Click="View_HRR_Click"  Label="HR Report" />
                         <!--<syncfusion:RibbonButton SizeForm="Small" ToolTip="IN OUT Punches Sequence Errors" Click="View_GroupMembers_Click"  Label="Sequence Errors" />-->
 
                     </syncfusion:RibbonBar>

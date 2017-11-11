@@ -42,6 +42,9 @@ namespace TandA.ViewModels
         DateTime _DateAbsent = DateTime.Now;
         DateTime _DateReturned = DateTime.Now;
         String _Note;
+        Boolean _IsEditEmployeeAbsenteeismVisible = false;
+        Int32 _Id;
+        Boolean _IsPaid = true;
         #endregion
 
         #region Properties
@@ -184,6 +187,23 @@ namespace TandA.ViewModels
                 if (_Note != value)
                 {
                     _Note = value;
+                }
+            }
+        }
+
+        public Visibility IsEditEmployeeAbsenteeismVisible
+        {
+            get { return _IsEditEmployeeAbsenteeismVisible ? Visibility.Visible : Visibility.Collapsed;  }
+        }
+
+        public Boolean IsPaid
+        {
+            get { return _IsPaid; }
+            set
+            {
+                if (_IsPaid != value)
+                {
+                    _IsPaid = value;
                 }
             }
         }
@@ -390,9 +410,12 @@ namespace TandA.ViewModels
         {
             try
             {
+                _WindowLoaderVisibility = Visibility.Visible;
+                RaisePropertyChanged("WindowLoaderVisibility");
+
                 await Task.Run(() =>
                 {
-                    AdminDAL.CreateEmployeeAbsenteeism(_Employee.EmployeeNumber, _DateAbsent, _DateReturned, _ACode.Reference, _Note);
+                    AdminDAL.CreateEmployeeAbsenteeism(_Employee.EmployeeNumber, _DateAbsent, _DateReturned, _ACode.Reference, _IsPaid, _Note);
                 });
                 _Absents.Clear();
 
@@ -408,21 +431,30 @@ namespace TandA.ViewModels
                 _DateReturned = DateTime.Now;
                 _ACode = null;
                 _Note = null;
+                _IsPaid = false;
+
                 RaisePropertyChanged("Absents");
                 RaisePropertyChanged("Employee");
                 RaisePropertyChanged("DateAbsent");
                 RaisePropertyChanged("DateReturned");
                 RaisePropertyChanged("ACode");
+                RaisePropertyChanged("IsPaid");
                 RaisePropertyChanged("Note");
                 RaisePropertyChanged("IsCreateEmployeeAbsenteeismVisible");
 
+                _WindowLoaderVisibility = Visibility.Collapsed;
+                RaisePropertyChanged("WindowLoaderVisibility");
             }
             catch (Exception ex)
             {
                 MessageBox.Show(this.ToString() + ".CreateEmployeeAbsenteeismExecute\n" + ex.Message, "Error");
             }
         }
-        public ICommand CreateEmployeeAbsenteeism { get { return new RelayCommand(CreateEmployeeAbsenteeismExecute); } }
+        private Boolean CanCreateEmployeeAbsenteeism()
+        {
+            return (_Employee != null && _Employee.EmployeeNumber != null && _DateAbsent != null && _DateReturned != null && _ACode != null && _ACode.Reference != null && _Note != null);
+        }
+        public ICommand CreateEmployeeAbsenteeism { get { return new RelayCommand(CreateEmployeeAbsenteeismExecute, CanCreateEmployeeAbsenteeism); } }
 
         private void CloseCreateEmployeeAbsenteeismExecute()
         {
@@ -430,6 +462,96 @@ namespace TandA.ViewModels
             RaisePropertyChanged("IsCreateEmployeeAbsenteeismVisible");
         }
         public ICommand CloseCreateEmployeeAbsenteeism { get { return new RelayCommand(CloseCreateEmployeeAbsenteeismExecute); } }
+
+        private void EditAbsenteeismExecute()
+        {
+            try
+            {
+                _IsEditEmployeeAbsenteeismVisible = true;
+
+                _Employee = _Employees.SingleOrDefault(m => m.EmployeeNumber == _Absent.EmployeeReference);
+                _DateAbsent = _Absent.DateAbsent;
+                _DateReturned = _Absent.TimeTo;
+                _ACode = _ACodes.SingleOrDefault(m => m.Reference == _Absent.AbsentRef);
+                _Note = _Absent.Note;
+                _Id = _Absent.Id;
+                _IsPaid = _Absent.IsPaid;
+
+                RaisePropertyChanged("Absents");
+                RaisePropertyChanged("Employee");
+                RaisePropertyChanged("DateAbsent");
+                RaisePropertyChanged("DateReturned");
+                RaisePropertyChanged("ACode");
+                RaisePropertyChanged("IsPaid");
+                RaisePropertyChanged("Note");
+                RaisePropertyChanged("IsEditEmployeeAbsenteeismVisible");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(this.ToString() + ".EditAbsenteeismExecute\n" + ex.Message, "Error");
+            }
+        }
+        private Boolean CanEditAbseenteeism()
+        {
+            return _Absent != null;
+        }
+        public ICommand EditAbsenteeism { get { return new RelayCommand(EditAbsenteeismExecute, CanEditAbseenteeism); } }
+
+        private void CancelEditAbsenteeismExecute()
+        {
+            try
+            {
+                _IsEditEmployeeAbsenteeismVisible = false;
+
+                _Employee = null;
+                _DateAbsent = DateTime.Now;
+                _DateReturned = DateTime.Now;
+                _ACode = null;
+                _Note = null;
+                _IsPaid = false;
+
+                RaisePropertyChanged("Absents");
+                RaisePropertyChanged("Employee");
+                RaisePropertyChanged("DateAbsent");
+                RaisePropertyChanged("DateReturned");
+                RaisePropertyChanged("IsPaid");
+                RaisePropertyChanged("ACode");
+                RaisePropertyChanged("Note");
+                RaisePropertyChanged("IsEditEmployeeAbsenteeismVisible");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this.ToString() + ".EditAbsenteeismExecute\n" + ex.Message, "Error");
+            }
+        }
+        public ICommand CancelEditAbsenteeism { get { return new RelayCommand(CancelEditAbsenteeismExecute); } }
+
+        private async void UpdateEmployeeAbsenteeismExecute()
+        {
+            try
+            {
+                _WindowLoaderVisibility = Visibility.Visible;
+                RaisePropertyChanged("WindowLoaderVisibility");
+
+                _Absents.Clear();
+                await Task.Run(() =>
+                {
+                    AdminDAL.UpdateEmployeeAbsenteeism(_Id, _Employee.EmployeeNumber, _DateAbsent, _DateReturned, _ACode.Reference, _IsPaid, _Note);
+                    _Absents = AdminDAL.GetEmployeeAbsenteeism();
+                });
+
+                MessageBox.Show("Successfully updated Employee absenteeism", "Update Successful", MessageBoxButton.OK, MessageBoxImage.Information);
+                _WindowLoaderVisibility = Visibility.Collapsed;
+
+                RaisePropertyChanged("Absents");
+                RaisePropertyChanged("WindowLoaderVisibility");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this.ToString() + ".UpdateEmployeeAbsenteeismExecute\n" + ex.Message, "Error");
+            }
+        }
+        public ICommand UpdateEmployeeAbsenteeism { get { return new RelayCommand(UpdateEmployeeAbsenteeismExecute, CanCreateEmployeeAbsenteeism); } }
         #endregion
     }
 }

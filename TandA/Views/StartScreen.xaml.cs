@@ -95,6 +95,12 @@ namespace TandA.Views
             PV.Show();
         }
 
+        private void View_HRR_Click(object sender, RoutedEventArgs e)
+        {
+            SelectPayPeriodView _HRR = new SelectPayPeriodView();
+            _HRR.Show();
+        }
+
         private void View_Absenteeism_Click(object sender, RoutedEventArgs e)
         {
             EmployeeAbsenteeismListView EAL = new EmployeeAbsenteeismListView();

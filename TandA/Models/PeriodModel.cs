@@ -12,6 +12,7 @@ namespace TandA.Models
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public Int32 WeekNumber { get; set; }
+        public String sPeriodStart { get; set; }
 
         public PeriodModel(Int32 p_ID, DateTime p_StartDate, DateTime p_EndDate, Int32 p_WeekNumber)
         {
@@ -19,6 +20,13 @@ namespace TandA.Models
             StartDate = p_StartDate;
             EndDate = p_EndDate;
             WeekNumber = p_WeekNumber;
+        }
+
+        public PeriodModel(Int32 p_Id, DateTime p_PeriodStart)
+        {
+            ID = p_Id;
+            StartDate = p_PeriodStart;
+            sPeriodStart = p_PeriodStart.ToShortDateString();
         }
     }
 }

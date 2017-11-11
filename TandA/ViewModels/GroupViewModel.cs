@@ -316,7 +316,11 @@ namespace TandA.ViewModels
                 MessageBox.Show(this.ToString() + ".CreateGroupExecute\n" + ex.Message, "Error");
             }
         }
-        public ICommand CreateGroup { get { return new RelayCommand(CreateGroupExecute); } }
+        private Boolean CanCreateGroupExecute()
+        {
+            return (_GroupRef != null && _GroupRef != String.Empty && _GroupDesc != null && _GroupDesc != String.Empty);
+        }
+        public ICommand CreateGroup { get { return new RelayCommand(CreateGroupExecute, CanCreateGroupExecute); } }
 
         private async void AddEmployeeToGroupExecute(object SelectedEmployees)
         {
@@ -397,6 +401,86 @@ namespace TandA.ViewModels
             }
         }
         public ICommand CreateGroupSupervisor { get { return new RelayCommand<object>(CreateGroupSupervisorExecute); } }
+
+        private async void UpdateGroupExecute()
+        {
+            try
+            {
+                _WindowLoaderVisibility = Visibility.Visible;
+                RaisePropertyChanged("WindowLoaderVisibility");
+                _Groups.Clear();
+
+                await Task.Run(() =>
+                {
+                    AdminDAL.UpdateGroup(_GroupRef, _GroupDesc);
+                    _Groups = AdminDAL.GetGroups();
+                });
+
+                MessageBox.Show("Successfully updated group", "Group updated", MessageBoxButton.OK, MessageBoxImage.Information);
+                
+                _GroupRef = "";
+                _GroupDesc = "";
+
+                _IsEditGroupVisible = false;
+                
+                _WindowLoaderVisibility = Visibility.Collapsed;
+
+                RaisePropertyChanged("GroupRef");
+                RaisePropertyChanged("GroupDesc");
+                RaisePropertyChanged("Groups");
+                RaisePropertyChanged("IsEditGroupVisible");
+                RaisePropertyChanged("WindowLoaderVisibility");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this.ToString() + ".UpdateGroupExecute\n" + ex.Message, "Error");
+            }
+        }
+        public ICommand UpdateGroup { get { return new RelayCommand(UpdateGroupExecute, CanCreateGroupExecute); } }
+
+        private async void DeleteGroupExecute()
+        {
+            try
+            {
+                _WindowLoaderVisibility = Visibility.Visible;
+                RaisePropertyChanged("WindowLoaderVisibility");
+                
+                if(MessageBox.Show("Are you sure you want to delete group?", "Are you sure?", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    _Groups.Clear();
+
+                    await Task.Run(() =>
+                    {
+                        AdminDAL.DeleteGroup(_GroupRef);
+                        _Groups = AdminDAL.GetGroups();
+                    });
+
+                    MessageBox.Show("Successfully deleted group", "Group deleted", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                    _GroupRef = "";
+                    _GroupDesc = "";
+
+                    _IsEditGroupVisible = false;
+                }
+
+                _WindowLoaderVisibility = Visibility.Collapsed;
+
+                RaisePropertyChanged("GroupRef");
+                RaisePropertyChanged("GroupDesc");
+                RaisePropertyChanged("Groups");
+                RaisePropertyChanged("IsEditGroupVisible");
+                RaisePropertyChanged("WindowLoaderVisibility");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this.ToString() + ".DeleteGroupExecute\n" + ex.Message, "Error");
+            }
+        }
+        private Boolean CanDeleteGroupExecute()
+        {
+            return (_GroupRef != null && _GroupRef != String.Empty);
+        }
+        public ICommand DeleteGroup { get { return new RelayCommand(DeleteGroupExecute, CanDeleteGroupExecute); } }
         #endregion
     }
 }

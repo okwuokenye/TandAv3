@@ -21,7 +21,7 @@ namespace TandA.Models
         {
             ID = p_ID;
             PeriodId = p_PeriodId;
-            PunchDate = p_PunchDate.Date;
+            PunchDate = p_PunchDate;
             sPunchDate = p_PunchDate.Date.ToShortDateString();
             PunchTime = p_PunchTime;
             PunchType = p_PunchType;

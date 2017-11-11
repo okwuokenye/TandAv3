@@ -78,7 +78,7 @@
 
                         <StackPanel Orientation="Horizontal" Margin="5 5">
                             <TextBlock Text="Password: " Width="120" />
-                            <PasswordBox Width="100" />
+                            <TextBox Text="{Binding SecurePassword}" Width="100" />
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal" Margin="5 5">
@@ -113,8 +113,8 @@
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal" Margin="5 15">
-                            <Button Width="80" Margin="10 0" Content="Save" Command="{Binding CreateEmployee}" CommandParameter="{Binding ElementName=Groups, Path=SelectedItems}" />
-                            <Button Width="80" Margin="10 0" Content="Delete" Command="{Binding CreateEmployee}" CommandParameter="{Binding ElementName=Groups, Path=SelectedItems}" />
+                            <Button Width="80" Margin="10 0" Content="Save" Command="{Binding UpdateEmployee}" CommandParameter="{Binding ElementName=Groups, Path=SelectedItems}" />
+                            <Button Width="80" Margin="10 0" Content="Delete" Command="{Binding DeleteEmployee}" CommandParameter="{Binding ElementName=Groups, Path=SelectedItems}" />
                             <Button Width="80" Margin="10 0" Content="Exit" Command="{Binding CloseEditEmployee}" />
                         </StackPanel>
 

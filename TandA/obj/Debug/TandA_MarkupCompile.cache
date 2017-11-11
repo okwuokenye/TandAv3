@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Administrator\Documents\Visual Studio 2017\Projects\TandA\TandA\App.xaml
-14686544571
+16419186339
 16797375949
-36263607069
+40-480065596
 30-1913186418
-Views\AbsentListView.xaml;Views\AddGroupMemberView.xaml;Views\CreateAbsenteeismView.xaml;Views\CreateEmployeeView.xaml;Views\CreateGroupView.xaml;Views\EmployeeAbsenteeismListView.xaml;Views\EmployeeListView.xaml;Views\GroupsListView.xaml;Views\GroupSupervisorsView.xaml;Views\MainWindow.xaml;Views\PunchesListView.xaml;Views\SetGroupSupervisorView.xaml;Views\StartScreen.xaml;Views\GroupEmployeesView.xaml;
+Views\AbsentListView.xaml;Views\AddGroupMemberView.xaml;Views\CreateAbsenteeismView.xaml;Views\CreateEmployeeView.xaml;Views\CreateGroupView.xaml;Views\EmployeeAbsenteeismListView.xaml;Views\EmployeeListView.xaml;Views\GroupsListView.xaml;Views\GroupSupervisorsView.xaml;Views\HRReportView.xaml;Views\MainWindow.xaml;Views\PunchesListView.xaml;Views\SelectPayPeriodView.xaml;Views\SetGroupSupervisorView.xaml;Views\StartScreen.xaml;Views\GroupEmployeesView.xaml;
 
 False
 

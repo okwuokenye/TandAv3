@@ -15,9 +15,11 @@ namespace TandA.Models
         public DateTime TimeAbsent { get; set; }
         public DateTime TimeTo { get; set; }
         public String AbsentRef { get; set; }
+        public Boolean IsPaid { get; set; }
         public String Note { get; set; }
 
-        public EmployeeAbsenteeismModel(Int32 p_Id, String p_EmployeeReference, String p_EmployeeName, DateTime p_DateAbsent, DateTime p_TimeAbsent, DateTime p_TimeTo, String p_AbsentRef, String p_Note)
+        public EmployeeAbsenteeismModel(Int32 p_Id, String p_EmployeeReference, String p_EmployeeName, DateTime p_DateAbsent, DateTime p_TimeAbsent, DateTime p_TimeTo, String p_AbsentRef, 
+            Boolean p_IsPaid, String p_Note)
         {
             Id = p_Id;
             EmployeeReference = p_EmployeeReference;
@@ -26,6 +28,7 @@ namespace TandA.Models
             TimeAbsent = p_TimeAbsent;
             TimeTo = p_TimeTo;
             AbsentRef = p_AbsentRef;
+            IsPaid = p_IsPaid;
             Note = p_Note;
         }
     }

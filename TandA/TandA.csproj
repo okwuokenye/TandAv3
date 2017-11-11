@@ -90,6 +90,7 @@
     <Compile Include="Models\EmployeeGroupsModel.cs" />
     <Compile Include="Models\EmployeeModel.cs" />
     <Compile Include="Models\GroupModel.cs" />
+    <Compile Include="Models\HRReportModel.cs" />
     <Compile Include="Models\NameValueModel.cs" />
     <Compile Include="Models\PeriodModel.cs" />
     <Compile Include="Models\PunchesModel.cs" />
@@ -99,6 +100,7 @@
     <Compile Include="ViewModels\AbsenteeismViewModel.cs" />
     <Compile Include="ViewModels\EmployeeViewModel.cs" />
     <Compile Include="ViewModels\GroupViewModel.cs" />
+    <Compile Include="ViewModels\HRReportViewModel.cs" />
     <Compile Include="ViewModels\PunchesViewModel.cs" />
     <Compile Include="ViewModels\StartScreenViewModel.cs" />
     <Compile Include="Views\AbsentListView.xaml.cs">
@@ -128,8 +130,14 @@
     <Compile Include="Views\GroupSupervisorsView.xaml.cs">
       <DependentUpon>GroupSupervisorsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\HRReportView.xaml.cs">
+      <DependentUpon>HRReportView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PunchesListView.xaml.cs">
       <DependentUpon>PunchesListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SelectPayPeriodView.xaml.cs">
+      <DependentUpon>SelectPayPeriodView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SetGroupSupervisorView.xaml.cs">
       <DependentUpon>SetGroupSupervisorView.xaml</DependentUpon>
@@ -176,6 +184,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\HRReportView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -189,6 +201,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\PunchesListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SelectPayPeriodView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

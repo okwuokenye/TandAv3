@@ -36,6 +36,7 @@ namespace TandA.ViewModels
         String _RecType = String.Empty;
         Boolean _IsUpdatePunchVisible = false;
         PeriodModel _Period;
+        String _EmployeeName = String.Empty;
         #endregion
 
         #region Properties
@@ -142,6 +143,11 @@ namespace TandA.ViewModels
         {
             get { return _IsUpdatePunchVisible ? Visibility.Visible : Visibility.Collapsed; }
         }
+
+        public String EmployeeName
+        {
+            get { return _Employee != null ? _Employee.Firstname + " " + _Employee.Lastname : "n/a"; }
+        }
         #endregion
 
         #region Constructors
@@ -202,6 +208,7 @@ namespace TandA.ViewModels
                     _Punches = AdminDAL.GetEmployeePunches(_Employee.EmployeeNumber, _Period.ID);
                 });
                 _IsViewPunchVisible = true;
+                RaisePropertyChanged("EmployeeName");
                 RaisePropertyChanged("IsViewPunchVisible");
                 RaisePropertyChanged("Punches");
             }

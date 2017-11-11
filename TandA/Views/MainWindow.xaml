@@ -5,17 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TandA"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="325">
+        Title="Login" Height="350" Width="325">
     <Grid Background="AliceBlue">
         <StackPanel>
             <TextBlock Text="Login" HorizontalAlignment="Center" FontSize="30" Margin="55 50" />
             <StackPanel Orientation="Horizontal" Margin="10 0">
-                <TextBlock Text="Username: " FontSize="20" />
+                <TextBlock Text="Username: " FontSize="20" Width="100" />
                 <TextBox Width="180" Height="20" Margin="6 0"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="10 10">
-                <TextBlock Text="Password: " FontSize="20" />
+                <TextBlock Text="Password: " FontSize="20" Width="100"/>
                 <PasswordBox Width="180" Height="20" Margin="6 0"/>
             </StackPanel>
 
