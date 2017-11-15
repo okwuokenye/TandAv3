@@ -45,6 +45,8 @@ namespace TandA.ViewModels
         Boolean _IsEditEmployeeAbsenteeismVisible = false;
         Int32 _Id;
         Boolean _IsPaid = true;
+        String _TImeAbsent = "06:00";
+        String _TImeReturned = "14:30";
         #endregion
 
         #region Properties
@@ -204,6 +206,30 @@ namespace TandA.ViewModels
                 if (_IsPaid != value)
                 {
                     _IsPaid = value;
+                }
+            }
+        }
+
+        public String TimeAbsent
+        {
+            get { return _TImeAbsent; }
+            set
+            {
+                if (_TImeAbsent != value)
+                {
+                    _TImeAbsent = value;
+                }
+            }
+        }
+
+        public String TimeReturned
+        {
+            get { return _TImeReturned; }
+            set
+            {
+                if (_TImeReturned != value)
+                {
+                    _TImeReturned = value;
                 }
             }
         }
@@ -415,7 +441,7 @@ namespace TandA.ViewModels
 
                 await Task.Run(() =>
                 {
-                    AdminDAL.CreateEmployeeAbsenteeism(_Employee.EmployeeNumber, _DateAbsent, _DateReturned, _ACode.Reference, _IsPaid, _Note);
+                    AdminDAL.CreateEmployeeAbsenteeism(_Employee.EmployeeNumber, _DateAbsent, _TImeAbsent, _DateReturned, _TImeReturned, _ACode.Reference, _IsPaid, _Note);
                 });
                 _Absents.Clear();
 
@@ -476,6 +502,8 @@ namespace TandA.ViewModels
                 _Note = _Absent.Note;
                 _Id = _Absent.Id;
                 _IsPaid = _Absent.IsPaid;
+                _TImeAbsent = _DateAbsent.TimeOfDay.ToString();
+                _TImeReturned = _DateReturned.TimeOfDay.ToString();
 
                 RaisePropertyChanged("Absents");
                 RaisePropertyChanged("Employee");
@@ -484,6 +512,8 @@ namespace TandA.ViewModels
                 RaisePropertyChanged("ACode");
                 RaisePropertyChanged("IsPaid");
                 RaisePropertyChanged("Note");
+                RaisePropertyChanged("TimeAbsent");
+                RaisePropertyChanged("TimeReturned");
                 RaisePropertyChanged("IsEditEmployeeAbsenteeismVisible");
             }
             catch(Exception ex)
@@ -536,7 +566,7 @@ namespace TandA.ViewModels
                 _Absents.Clear();
                 await Task.Run(() =>
                 {
-                    AdminDAL.UpdateEmployeeAbsenteeism(_Id, _Employee.EmployeeNumber, _DateAbsent, _DateReturned, _ACode.Reference, _IsPaid, _Note);
+                    AdminDAL.UpdateEmployeeAbsenteeism(_Id, _Employee.EmployeeNumber, _DateAbsent, _TImeAbsent, _DateReturned, _TImeReturned, _ACode.Reference, _IsPaid, _Note);
                     _Absents = AdminDAL.GetEmployeeAbsenteeism();
                 });
 

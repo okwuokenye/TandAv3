@@ -85,16 +85,19 @@
                         <StackPanel Orientation="Horizontal" Margin="5 5">
                             <TextBlock Text="Time Absent: " Margin="0 5" Width="120" />
                             <!--<TextBox Width="150" Text="{Binding TimeAbsent}" />-->
-                            <syncfusion:DateTimeEdit x:Name="dateTimeEdit" Height="25" Width="150"  DateTime="{Binding DateAbsent}" EnableClassicStyle="True" IsCalendarEnabled="False" IsWatchEnabled="True" IsEmptyDateEnabled="False" Pattern="CustomPattern" CustomPattern="hh:mm"></syncfusion:DateTimeEdit>
-                            <TextBlock Text="hh:mm" Margin="5 5" />
+                            <TextBox Width="80" Height="25" Text="{Binding TimeAbsent}" Margin="5 5" />
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal" Margin="5 5">
-                            <TextBlock Text="Time To: " Margin="0 5" Width="120" />
-                            <syncfusion:DateTimeEdit Height="25" Width="150"  DateTime="{Binding DateReturned}" EnableClassicStyle="True" IsCalendarEnabled="True" IsWatchEnabled="True" IsEmptyDateEnabled="False" Pattern="CustomPattern" CustomPattern="hh:mm"></syncfusion:DateTimeEdit>
-                            <TextBlock Text="hh:mm" Margin="5 5" />
+                            <TextBlock Text="Date Returned: " Margin="0 5" Width="120" />
+                            <DatePicker Height="25" Width="150" Margin="0 0" HorizontalAlignment="Left" VerticalAlignment="Top" SelectedDate="{Binding DateReturned, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></DatePicker>
                         </StackPanel>
 
+                        <StackPanel Orientation="Horizontal" Margin="5 5">
+                            <TextBlock Text="Time Returned: " Margin="0 5" Width="120" />
+                            <TextBox Height="25" Width="80" Text="{Binding TimeReturned}" Margin="5 5" />
+                        </StackPanel>
+                        
                         <StackPanel Orientation="Horizontal" Margin="5 5">
                             <TextBlock Text="Paid Leave: " Margin="0 5" Width="120" />
                             <CheckBox IsChecked="{Binding IsPaid}" Width="80" Margin="0 5" />
@@ -141,6 +144,7 @@
                             <ComboBox ItemsSource="{Binding Employees}" SelectedItem="{Binding Employee}" Width="250" Margin="0 0" DisplayMemberPath="NameLabel"/>
                         </StackPanel>
 
+
                         <StackPanel Orientation="Horizontal" Margin="5 5">
                             <TextBlock Text="Date Absent: " Margin="0 5" Width="120" />
                             <DatePicker Height="25" Width="150" Margin="0 0" HorizontalAlignment="Left" VerticalAlignment="Top" SelectedDate="{Binding DateAbsent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></DatePicker>
@@ -149,16 +153,18 @@
                         <StackPanel Orientation="Horizontal" Margin="5 5">
                             <TextBlock Text="Time Absent: " Margin="0 5" Width="120" />
                             <!--<TextBox Width="150" Text="{Binding TimeAbsent}" />-->
-                            <syncfusion:DateTimeEdit Height="25" Width="150"  DateTime="{Binding DateAbsent}" EnableClassicStyle="True" IsCalendarEnabled="False" IsWatchEnabled="True" IsEmptyDateEnabled="False" Pattern="CustomPattern" CustomPattern="hh:mm"></syncfusion:DateTimeEdit>
-                            <TextBlock Text="hh:mm" Margin="5 5" />
+                            <TextBox Width="80" Height="25" Text="{Binding TimeAbsent}" Margin="5 5" />
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal" Margin="5 5">
-                            <TextBlock Text="Time To: " Margin="0 5" Width="120" />
-                            <syncfusion:DateTimeEdit Height="25" Width="150"  DateTime="{Binding DateReturned}" EnableClassicStyle="True" IsCalendarEnabled="True" IsWatchEnabled="True" IsEmptyDateEnabled="False" Pattern="CustomPattern" CustomPattern="hh:mm"></syncfusion:DateTimeEdit>
-                            <TextBlock Text="hh:mm" Margin="5 5" />
+                            <TextBlock Text="Date Returned: " Margin="0 5" Width="120" />
+                            <DatePicker Height="25" Width="150" Margin="0 0" HorizontalAlignment="Left" VerticalAlignment="Top" SelectedDate="{Binding DateReturned, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></DatePicker>
                         </StackPanel>
 
+                        <StackPanel Orientation="Horizontal" Margin="5 5">
+                            <TextBlock Text="Time Returned: " Margin="0 5" Width="120" />
+                            <TextBox Height="25" Width="80" Text="{Binding TimeReturned}" Margin="5 5" />
+                        </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="5 5">
                             <TextBlock Text="Paid Leave: " Margin="0 5" Width="120" />
                             <CheckBox IsChecked="{Binding IsPaid}" Width="80" Margin="0 5" />

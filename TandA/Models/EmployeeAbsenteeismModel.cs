@@ -17,6 +17,7 @@ namespace TandA.Models
         public String AbsentRef { get; set; }
         public Boolean IsPaid { get; set; }
         public String Note { get; set; }
+        public Decimal Hours { get; set; }
 
         public EmployeeAbsenteeismModel(Int32 p_Id, String p_EmployeeReference, String p_EmployeeName, DateTime p_DateAbsent, DateTime p_TimeAbsent, DateTime p_TimeTo, String p_AbsentRef, 
             Boolean p_IsPaid, String p_Note)

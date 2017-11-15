@@ -333,7 +333,7 @@ namespace TandA.DALs
             }
         }
 
-        public void CreateEmployeeAbsenteeism(String p_EmployeeReference, DateTime p_DateAbsent, DateTime p_DateReturned, String p_AbsenteeismRef, Boolean p_IsPaid, String p_Note)
+        public void CreateEmployeeAbsenteeism(String p_EmployeeReference, DateTime p_DateAbsent, String p_TimeAbsent, DateTime p_DateReturned, String p_TimeReturned, String p_AbsenteeismRef, Boolean p_IsPaid, String p_Note)
         {
             SqlConnection conn = new SqlConnection(ConnectionString);
             
@@ -343,8 +343,8 @@ namespace TandA.DALs
                 SqlCommand cmd = new SqlCommand("spTandA_CreateEmployeeAbsenteeism", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@EmployeeRef", p_EmployeeReference);
-                cmd.Parameters.AddWithValue("@DateAbsent", p_DateAbsent);
-                cmd.Parameters.AddWithValue("@DateReturned", p_DateReturned);
+                cmd.Parameters.AddWithValue("@DateAbsent", DateTime.Parse(p_DateAbsent.Month + "/" + p_DateAbsent.Day + "/" + p_DateAbsent.Year + " " + p_TimeAbsent, System.Globalization.CultureInfo.CurrentCulture));
+                cmd.Parameters.AddWithValue("@DateReturned", DateTime.Parse(p_DateReturned.Month + "/" + p_DateReturned.Day + "/" + p_DateReturned.Year + " " + p_TimeReturned, System.Globalization.CultureInfo.CurrentCulture));
                 cmd.Parameters.AddWithValue("@AbsenteeismRef", p_AbsenteeismRef);
                 cmd.Parameters.AddWithValue("@fIsPaid", p_IsPaid);
                 cmd.Parameters.AddWithValue("@Note", p_Note);
@@ -403,7 +403,7 @@ namespace TandA.DALs
             }
         }
 
-        public void UpdateEmployeeAbsenteeism(Int32 p_Id, String p_EmployeeReference, DateTime p_DateAbsent, DateTime p_DateReturned, String p_AbsenteeismRef, Boolean p_IsPaid, String p_Note)
+        public void UpdateEmployeeAbsenteeism(Int32 p_Id, String p_EmployeeReference, DateTime p_DateAbsent, String p_TimeAbsent, DateTime p_DateReturned, String p_TimeReturned, String p_AbsenteeismRef, Boolean p_IsPaid, String p_Note)
         {
             SqlConnection conn = new SqlConnection(ConnectionString);
 
@@ -414,8 +414,8 @@ namespace TandA.DALs
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Id", p_Id);
                 cmd.Parameters.AddWithValue("@EmployeeRef", p_EmployeeReference);
-                cmd.Parameters.AddWithValue("@DateAbsent", p_DateAbsent);
-                cmd.Parameters.AddWithValue("@DateReturned", p_DateReturned);
+                cmd.Parameters.AddWithValue("@DateAbsent", DateTime.Parse(p_DateAbsent.Month + "/" + p_DateAbsent.Day + "/" + p_DateAbsent.Year + " " + p_TimeAbsent, System.Globalization.CultureInfo.CurrentCulture));
+                cmd.Parameters.AddWithValue("@DateReturned", DateTime.Parse(p_DateReturned.Month + "/" + p_DateReturned.Day + "/" + p_DateReturned.Year + " " + p_TimeReturned, System.Globalization.CultureInfo.CurrentCulture));
                 cmd.Parameters.AddWithValue("@AbsenteeismRef", p_AbsenteeismRef);
                 cmd.Parameters.AddWithValue("@fIsPaid", p_IsPaid);
                 cmd.Parameters.AddWithValue("@Note", p_Note);

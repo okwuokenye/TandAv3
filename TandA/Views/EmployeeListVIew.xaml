@@ -100,7 +100,7 @@
                             <TextBlock Text="Employee Groups" Width="120" />
                             <GroupBox Margin="0 5" >
                                 
-                                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                <ScrollViewer Height="100">
                                     <ItemsControl ItemsSource="{Binding EmployeeGroups}">
                                         <ItemsControl.ItemTemplate>
                                             <DataTemplate>
