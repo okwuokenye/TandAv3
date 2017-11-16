@@ -292,5 +292,47 @@ namespace TandA.DALs
 
         }
 
+        public EmployeeModel Login(String p_EmployeepRef, String p_Password)
+        {
+            SqlConnection conn = new SqlConnection(ConnectionString);
+
+            try
+            {
+
+                EmployeeModel TheCollection = null;
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("spTandA_Login", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@EmployeepRef", p_EmployeepRef);
+                cmd.Parameters.AddWithValue("@Password", p_Password);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+
+                while (reader.Read())
+                {
+
+
+                    TheCollection = new EmployeeModel(
+
+                                            Convert.ToString(reader["EmployeeNo"]),
+                                            Convert.ToString(reader["Firstname"]),
+                                            Convert.ToString(reader["Lastname"]),
+                                            Convert.ToString(reader["EmailAddress"]),
+                                            Convert.ToString(reader["MemberStatus"])
+                                            );
+                }
+
+                return TheCollection;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(this.ToString() + ".Login\n" + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
     }
 }
