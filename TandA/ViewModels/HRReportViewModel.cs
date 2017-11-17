@@ -290,10 +290,10 @@ namespace TandA.ViewModels
             Decimal numHours = Enumerable.Range(0, minutes)
                 .Select(min => incidentStart.AddMinutes(min))
                 .Where(dt => dt.TimeOfDay >= officeOpen && dt.TimeOfDay < officeClosed)
-                .GroupBy(dt => new DateTime(dt.Year, dt.Month, dt.Day, dt.Hour, 0, 0, 0)) // round to hour
+                .GroupBy(dt => new DateTime(dt.Year, dt.Month, dt.Day, dt.Hour, dt.Minute, 0, 0)) // round to hour
                 .Count();
 
-            return numHours;
+            return numHours/60;
         }
 
         private Decimal CalculateHoursAfterBreak(DateTime p_Start, DateTime p_End)
@@ -389,6 +389,10 @@ namespace TandA.ViewModels
 
                         _HRR.Rows.Add(dr1);
 
+                        l_Total = 0;
+                        l_Abs = 0;
+                        l_Week1 = 0;
+                        l_Week2 = 0;
                     }
 
                     DataRow drSum = _HRR.NewRow();
@@ -400,13 +404,18 @@ namespace TandA.ViewModels
                     Decimal l_AbsSum = 0;
                     Decimal l_Abs2 = 0;
                     l_Total = 0;
+                    Decimal l_OverTime1 = 0;
+                    Decimal l_OverTime2 = 0;
+
                     foreach (EmployeeModel _e in _Employees)
                     {
 
-                        l_Week1 += CalculatePunches(_e.EmployeeNumber, 1);
-                        l_Week2 += CalculatePunches(_e.EmployeeNumber, 2);
+                        l_Week1 += CalculatePunches(_e.EmployeeNumber, 1) > 40 ? 40 : CalculatePunches(_e.EmployeeNumber, 1);
+                        l_Week2 += CalculatePunches(_e.EmployeeNumber, 2) > 40 ? 40 : CalculatePunches(_e.EmployeeNumber, 2);
 
-                        
+                        l_OverTime1 += CalculatePunches(_e.EmployeeNumber, 1) > 40 ? (CalculatePunches(_e.EmployeeNumber, 1) - 40) : 0;
+                        l_OverTime2 += CalculatePunches(_e.EmployeeNumber, 2) > 40 ? (CalculatePunches(_e.EmployeeNumber, 2) - 40) : 0;
+
                         foreach (AbsenteeismModel _a in _ACodes)
                         {
                             l_Abs = CalculateAbsenteeism(_e.EmployeeNumber, 1, _a);
@@ -416,9 +425,9 @@ namespace TandA.ViewModels
                     }
                     l_Total += l_Week1 + l_Week2;
                    
-                    drSum["Week 1"] = l_Week1 > 40 ? "40" : l_Week1.ToString();
+                    drSum["Week 1"] = l_Week1.ToString();
 
-                    drSum["Overtime 1"] = l_Week1 > 40 ? (l_Week1 - 40).ToString() : "0"; ;
+                    drSum["Overtime 1"] = l_OverTime1;
 
                     foreach (AbsenteeismModel _a in _ACodes)
                     {
@@ -435,9 +444,11 @@ namespace TandA.ViewModels
                     }
                     l_Total += l_AbsSum;
 
-                    drSum["Week 2"] = l_Week2 > 40 ? "40" : l_Week2.ToString();
+                    drSum["Week 2"] = l_Week2.ToString();
 
-                    drSum["Overtime 2"] = l_Week2 > 40 ? (l_Week2 - 40).ToString() : "0"; 
+                    drSum["Overtime 2"] = l_OverTime2;
+
+                    l_Total += l_OverTime1 + l_OverTime2; 
                     drSum["Total"] = l_Total.ToString();
 
                     _HRR.Rows.Add(drSum);
