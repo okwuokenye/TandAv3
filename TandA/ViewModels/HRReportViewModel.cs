@@ -155,7 +155,7 @@ namespace TandA.ViewModels
                     if (l_ClockIns.Where(m => m.PunchDate.Date == l_FirstIn.Date).Count() > l_Increment + 1)
                     {
                         l_NextIn = l_ClockIns[l_Increment + 1].PunchDate;
-                        var l_PunchOut = l_ClockOuts.Where(m => m.PunchDate > l_FirstIn && m.PunchDate < l_NextIn).FirstOrDefault();
+                        var l_PunchOut = l_ClockOuts.Where(m => m.PunchDate.Date == l_FirstIn.Date && m.PunchDate > l_FirstIn && m.PunchDate < l_NextIn).FirstOrDefault();
                         if (l_PunchOut != null)//if puch out exists
                         {
                             l_Hours += CalculateHoursBeforeBreak(l_FirstIn, l_PunchOut.PunchDate);
@@ -164,7 +164,7 @@ namespace TandA.ViewModels
                     }
                     else //no other punch in for the day
                     {
-                        var l_PunchOut = l_ClockOuts.Where(m => m.PunchDate > l_FirstIn).FirstOrDefault();
+                        var l_PunchOut = l_ClockOuts.Where(m => m.PunchDate.Date == l_FirstIn.Date && m.PunchDate > l_FirstIn).FirstOrDefault();
                         if (l_PunchOut != null)//if puch out exists
                         {
                             l_Hours += CalculateHoursBeforeBreak(l_FirstIn, l_PunchOut.PunchDate);
